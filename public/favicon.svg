@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Nordmaster logo">
+  <rect width="64" height="64" rx="12" fill="#0f172a"/>
+  <path d="M14 48V16h7l15 20V16h7v32h-7L21 28v20z" fill="#ffffff"/>
+</svg>
