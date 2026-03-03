@@ -66,7 +66,7 @@ export function Header() {
               className="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-900 border border-slate-200 rounded-full text-xs uppercase tracking-widest"
             >
               <Globe size={14} />
-              {language}
+              {language === 'fi' ? 'Finnish → EN' : 'English → FI'}
             </button>
             <a
               href="tel:+358XXXXXXXX"

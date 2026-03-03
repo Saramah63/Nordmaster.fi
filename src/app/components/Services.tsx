@@ -54,10 +54,11 @@ export function Services() {
         <div className="mt-16 grid lg:grid-cols-2 gap-8">
           <div className="rounded-[28px] border border-slate-200 bg-white p-10 shadow-lg">
             <div className="text-xs uppercase tracking-[0.4em] text-slate-500 mb-4">
-              {t('service.planning.title')}
+              {t('service.consulting.title')}
             </div>
-            <h3 className="text-3xl text-slate-900 mb-4">{t('service.execution.title')}</h3>
-            <p className="text-slate-600 mb-6">{t('service.planning.desc')}</p>
+            <h3 className="text-3xl text-slate-900 mb-4">{t('service.project.title')}</h3>
+            <p className="text-slate-600 mb-4">{t('service.project.desc')}</p>
+            <p className="text-sm text-slate-500">{t('service.consulting.desc')}</p>
             <a href="#projects" className="inline-flex items-center gap-2 text-sm font-medium text-slate-900">
               {t('projects.label')}
               <ArrowUpRight size={16} />
@@ -65,10 +66,10 @@ export function Services() {
           </div>
           <div className="rounded-[28px] border border-slate-200 bg-slate-900 text-white p-10 shadow-xl">
             <div className="text-xs uppercase tracking-[0.4em] text-slate-300 mb-4">
-              {t('service.management.title')}
+              {t('service.delivery.title')}
             </div>
             <h3 className="text-3xl mb-4">{t('service.execution.title')}</h3>
-            <p className="text-slate-300 mb-6">{t('service.execution.desc')}</p>
+            <p className="text-slate-300 mb-6">{t('service.delivery.desc')}</p>
             <a href="#contact" className="inline-flex items-center gap-2 text-sm font-medium text-white">
               {t('contact.label')}
               <ArrowUpRight size={16} />

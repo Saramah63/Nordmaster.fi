@@ -15,7 +15,7 @@ const fi = {
   'nav.home': 'Etusivu',
   'nav.services': 'Palvelut',
   'nav.projects': 'Referenssit',
-  'nav.about': 'Meistä',
+  'nav.about': 'Yritys',
   'nav.call': 'Soita meille',
   'company.tagline': 'Metallisten rakenteiden valmistus',
 
@@ -51,6 +51,12 @@ const fi = {
   'service.planning.desc': 'Metallisten rakenteiden 3D-suunnittelu ja tekniset piirustukset. Yhteistyö arkkitehtien kanssa.',
   'service.execution.title': 'Huolto ja korjaus',
   'service.execution.desc': 'Metallisten rakenteiden huolto, kunnostus ja korjaus. Pidämme rakenteesi kunnossa.',
+  'service.consulting.title': 'Konsultointi',
+  'service.consulting.desc': 'Asiantuntija-apu materiaalivalintoihin ja rakenneratkaisuihin. Ammattitaitoinen neuvonta.',
+  'service.project.title': 'Projektisuunnittelu',
+  'service.project.desc': 'Laaditaan yksityiskohtainen suunnitelma projektillesi. Ammattitaitoinen konsultointi ja projektin hallinta.',
+  'service.delivery.title': 'Toteutus',
+  'service.delivery.desc': 'Laadukas toteutus moderneilla laitteilla ja kokeneen tiimin toimesta. Aikataulussa ja budjetissa.',
 
   // Projects
   'projects.label': 'Referenssit',
