@@ -50,7 +50,7 @@ export function Hero() {
                 <div>{t('hero.stat1')}</div>
               </div>
               <div>
-                <div className="text-2xl font-semibold text-slate-900">100%</div>
+                <div className="text-2xl font-semibold text-slate-900">200+</div>
                 <div>{t('hero.stat2')}</div>
               </div>
               <div>

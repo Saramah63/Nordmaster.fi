@@ -69,7 +69,7 @@ export function About() {
                   <div className="text-sm text-slate-500">{t('about.stat1')}</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-semibold text-slate-900">150+</div>
+                  <div className="text-3xl font-semibold text-slate-900">200+</div>
                   <div className="text-sm text-slate-500">{t('about.stat2')}</div>
                 </div>
                 <div>
