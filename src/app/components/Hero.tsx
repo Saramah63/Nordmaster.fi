@@ -1,91 +1,98 @@
-import { ArrowRight, Award, Clock, ThumbsUp } from 'lucide-react';
+import { ArrowUpRight, ShieldCheck, Sparkles, Ruler } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export function Hero() {
   const { t } = useLanguage();
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-slate-900">
-      {/* Background Image with Overlay */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="https://images.unsplash.com/photo-1580063665421-4c9cbe9ec11b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjb25zdHJ1Y3Rpb24lMjBzaXRlJTIwRmlubGFuZCUyMGJ1aWxkaW5nfGVufDF8fHx8MTc3MTgzNTgxNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-          alt="Construction site"
-          className="w-full h-full object-cover opacity-30"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-slate-900 via-slate-900/95 to-slate-900/80"></div>
+    <section id="home" className="relative overflow-hidden bg-[#f7f6f2] pt-32 pb-20">
+      <div className="absolute inset-0">
+        <div className="absolute -top-24 -right-24 h-80 w-80 rounded-full bg-amber-200/40 blur-3xl" />
+        <div className="absolute top-1/2 -left-28 h-72 w-72 rounded-full bg-slate-200/70 blur-3xl" />
       </div>
 
-      <div className="container mx-auto px-4 relative z-10 pt-20 pb-16">
-        <div className="max-w-4xl">
-          {/* Badge */}
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-md border border-white/20 rounded-full text-white text-sm font-medium mb-8">
-            <Award className="w-4 h-4" />
-            <span>{t('hero.badge')}</span>
-          </div>
-          
-          {/* Main Heading */}
-          <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white leading-tight mb-8">
-            {t('hero.title1')}
-            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-amber-400 to-orange-500">
-              {t('hero.title2')}
-            </span>
-            <span className="block">{t('hero.title3')}</span>
-          </h1>
-          
-          {/* Description */}
-          <p className="text-xl md:text-2xl text-slate-300 leading-relaxed mb-12 max-w-2xl">
-            {t('hero.description')}
-          </p>
-          
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 mb-16">
-            <a 
-              href="#contact" 
-              className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-900 rounded-lg hover:bg-slate-100 transition-all shadow-xl hover:shadow-2xl group font-semibold text-lg"
-            >
-              {t('hero.cta.quote')}
-              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform" size={20} />
-            </a>
-            <a 
-              href="#projects" 
-              className="inline-flex items-center justify-center px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg border-2 border-white/30 hover:bg-white/20 transition-all font-semibold text-lg"
-            >
-              {t('hero.cta.projects')}
-            </a>
+      <div className="container mx-auto px-4 relative z-10">
+        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
+          <div>
+            <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-600">
+              <Sparkles size={14} />
+              {t('hero.badge')}
+            </div>
+
+            <h1 className="mt-6 text-5xl md:text-7xl text-slate-900 leading-[1.05]">
+              {t('hero.title1')} <span className="text-slate-500">{t('hero.title2')}</span>
+              <span className="block text-slate-900">{t('hero.title3')}</span>
+            </h1>
+
+            <p className="mt-6 text-lg md:text-xl text-slate-600 max-w-2xl">
+              {t('hero.description')}
+            </p>
+
+            <div className="mt-10 flex flex-col sm:flex-row gap-4">
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-slate-900 px-6 py-3 text-white text-sm font-medium hover:bg-slate-800"
+              >
+                {t('hero.cta.quote')}
+                <ArrowUpRight size={18} />
+              </a>
+              <a
+                href="#projects"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-slate-300 px-6 py-3 text-slate-700 text-sm font-medium hover:border-slate-400"
+              >
+                {t('hero.cta.projects')}
+              </a>
+            </div>
+
+            <div className="mt-12 grid grid-cols-3 gap-6 max-w-lg text-sm text-slate-600">
+              <div>
+                <div className="text-2xl font-semibold text-slate-900">10+</div>
+                <div>{t('hero.stat1')}</div>
+              </div>
+              <div>
+                <div className="text-2xl font-semibold text-slate-900">100%</div>
+                <div>{t('hero.stat2')}</div>
+              </div>
+              <div>
+                <div className="text-2xl font-semibold text-slate-900">{t('common.quality')}</div>
+                <div>{t('hero.stat3')}</div>
+              </div>
+            </div>
           </div>
 
-          {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 md:gap-12 max-w-2xl">
-            <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-                <Clock className="w-5 h-5 text-amber-400" />
-                <div className="text-4xl font-bold text-white">10+</div>
-              </div>
-              <div className="text-sm text-slate-400">{t('hero.stat1')}</div>
+          <div className="relative">
+            <div className="rounded-[28px] border border-slate-200 bg-white shadow-xl overflow-hidden">
+              <img
+                src="https://images.unsplash.com/photo-1489515217757-5fd1be406fef?auto=format&fit=crop&w=900&q=80"
+                alt="Modern construction"
+                className="h-[520px] w-full object-cover"
+              />
             </div>
-            <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-                <ThumbsUp className="w-5 h-5 text-amber-400" />
-                <div className="text-4xl font-bold text-white">100%</div>
+
+            <div className="absolute -left-8 -bottom-8 w-64 rounded-2xl border border-slate-200 bg-white p-5 shadow-xl">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-xl bg-slate-900 text-white flex items-center justify-center">
+                  <ShieldCheck size={18} />
+                </div>
+                <div>
+                  <div className="text-sm text-slate-500">{t('about.feature2.title')}</div>
+                  <div className="text-base font-semibold text-slate-900">{t('about.feature2.desc')}</div>
+                </div>
               </div>
-              <div className="text-sm text-slate-400">{t('hero.stat2')}</div>
             </div>
-            <div className="text-center md:text-left">
-              <div className="flex items-center justify-center md:justify-start gap-2 mb-2">
-                <Award className="w-5 h-5 text-amber-400" />
-                <div className="text-4xl font-bold text-white">{t('common.quality')}</div>
+
+            <div className="absolute -right-6 top-12 w-56 rounded-2xl border border-slate-200 bg-white p-5 shadow-xl">
+              <div className="flex items-center gap-3">
+                <div className="h-10 w-10 rounded-xl bg-amber-500/90 text-white flex items-center justify-center">
+                  <Ruler size={18} />
+                </div>
+                <div>
+                  <div className="text-sm text-slate-500">{t('service.planning.title')}</div>
+                  <div className="text-base font-semibold text-slate-900">{t('service.planning.desc')}</div>
+                </div>
               </div>
-              <div className="text-sm text-slate-400">{t('hero.stat3')}</div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/30 rounded-full flex items-start justify-center p-2">
-          <div className="w-1 h-2 bg-white/50 rounded-full"></div>
         </div>
       </div>
     </section>

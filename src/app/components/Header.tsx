@@ -1,4 +1,4 @@
-import { Menu, X, Phone, Globe } from 'lucide-react';
+import { Menu, X, Phone, Globe, ArrowUpRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -9,7 +9,7 @@ export function Header() {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
+      setIsScrolled(window.scrollY > 30);
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -28,94 +28,112 @@ export function Header() {
   };
 
   return (
-    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-lg py-3' : 'bg-white/90 backdrop-blur-md py-4'
-    }`}>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm' : 'bg-transparent'
+      }`}
+    >
       <nav className="container mx-auto px-4">
-        <div className="flex items-center justify-between">
-          <div className="flex items-center space-x-3">
-            <div className="w-12 h-12 bg-gradient-to-br from-slate-800 to-slate-950 rounded-lg flex items-center justify-center shadow-lg">
-              <span className="text-white font-bold text-2xl">N</span>
+        <div className="flex items-center justify-between py-5">
+          <div className="flex items-center gap-4">
+            <div className="w-12 h-12 rounded-xl border border-slate-200 bg-white/70 backdrop-blur flex items-center justify-center shadow-sm">
+              <span className="text-slate-900 font-bold text-xl">N</span>
             </div>
-            <div>
-              <span className="text-xl font-bold text-slate-900 block leading-none">Nordmaster Group</span>
-              <span className="text-xs text-slate-600">{t('company.tagline')}</span>
+            <div className="leading-none">
+              <span className="block text-slate-900 font-semibold text-lg">Nordmaster Group</span>
+              <span className="text-xs uppercase tracking-[0.2em] text-slate-500">{t('company.tagline')}</span>
             </div>
           </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center space-x-10">
-            <button onClick={() => scrollToSection('home')} className="text-slate-700 hover:text-slate-900 font-medium transition-colors relative group">
+          <div className="hidden lg:flex items-center gap-10">
+            <button onClick={() => scrollToSection('home')} className="text-slate-700 hover:text-slate-900 text-sm uppercase tracking-widest">
               {t('nav.home')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-slate-900 transition-all group-hover:w-full"></span>
             </button>
-            <button onClick={() => scrollToSection('services')} className="text-slate-700 hover:text-slate-900 font-medium transition-colors relative group">
+            <button onClick={() => scrollToSection('services')} className="text-slate-700 hover:text-slate-900 text-sm uppercase tracking-widest">
               {t('nav.services')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-slate-900 transition-all group-hover:w-full"></span>
             </button>
-            <button onClick={() => scrollToSection('projects')} className="text-slate-700 hover:text-slate-900 font-medium transition-colors relative group">
+            <button onClick={() => scrollToSection('projects')} className="text-slate-700 hover:text-slate-900 text-sm uppercase tracking-widest">
               {t('nav.projects')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-slate-900 transition-all group-hover:w-full"></span>
             </button>
-            <button onClick={() => scrollToSection('about')} className="text-slate-700 hover:text-slate-900 font-medium transition-colors relative group">
+            <button onClick={() => scrollToSection('about')} className="text-slate-700 hover:text-slate-900 text-sm uppercase tracking-widest">
               {t('nav.about')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-slate-900 transition-all group-hover:w-full"></span>
             </button>
-            
-            {/* Language Switcher */}
+          </div>
+
+          <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:text-slate-900 font-medium transition-colors border-2 border-slate-200 rounded-lg hover:border-slate-300"
+              className="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-900 border border-slate-200 rounded-full text-xs uppercase tracking-widest"
             >
-              <Globe size={18} />
-              <span className="uppercase">{language}</span>
+              <Globe size={14} />
+              {language}
             </button>
-
-            <a href="tel:+358XXXXXXXX" className="flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition-all shadow-md hover:shadow-lg">
-              <Phone size={18} />
-              <span className="font-medium">{t('nav.call')}</span>
+            <a
+              href="tel:+358XXXXXXXX"
+              className="inline-flex items-center gap-2 px-4 py-2 border border-slate-900 text-slate-900 rounded-full text-sm font-medium hover:bg-slate-900 hover:text-white transition-colors"
+            >
+              <Phone size={16} />
+              {t('nav.call')}
+            </a>
+            <a
+              href="#contact"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-full text-sm font-medium hover:bg-slate-800 transition-colors"
+            >
+              {t('hero.cta.quote')}
+              <ArrowUpRight size={16} />
             </a>
           </div>
 
-          {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden text-slate-700 hover:text-slate-900 p-2"
           >
-            {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
+            {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
           </button>
         </div>
 
-        {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-6 pb-6 space-y-4 border-t border-slate-200 pt-6">
-            <button onClick={() => scrollToSection('home')} className="block w-full text-left text-slate-700 hover:text-slate-900 py-2 font-medium">
-              {t('nav.home')}
-            </button>
-            <button onClick={() => scrollToSection('services')} className="block w-full text-left text-slate-700 hover:text-slate-900 py-2 font-medium">
-              {t('nav.services')}
-            </button>
-            <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-slate-700 hover:text-slate-900 py-2 font-medium">
-              {t('nav.projects')}
-            </button>
-            <button onClick={() => scrollToSection('about')} className="block w-full text-left text-slate-700 hover:text-slate-900 py-2 font-medium">
-              {t('nav.about')}
-            </button>
-            
-            {/* Mobile Language Switcher */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 w-full px-4 py-3 text-slate-700 hover:text-slate-900 font-medium border-2 border-slate-200 rounded-lg hover:border-slate-300"
-            >
-              <Globe size={18} />
-              <span className="uppercase">{language === 'fi' ? 'Finnish' : 'English'}</span>
-              <span className="ml-auto text-sm text-slate-500">→ {language === 'fi' ? 'EN' : 'FI'}</span>
-            </button>
-
-            <a href="tel:+358XXXXXXXX" className="flex items-center justify-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition-all">
-              <Phone size={18} />
-              <span className="font-medium">{t('nav.call')}</span>
-            </a>
+          <div className="lg:hidden rounded-2xl border border-slate-200 bg-white shadow-xl p-6 mb-6">
+            <div className="grid gap-4 text-sm uppercase tracking-widest">
+              <button onClick={() => scrollToSection('home')} className="text-left text-slate-700 hover:text-slate-900">
+                {t('nav.home')}
+              </button>
+              <button onClick={() => scrollToSection('services')} className="text-left text-slate-700 hover:text-slate-900">
+                {t('nav.services')}
+              </button>
+              <button onClick={() => scrollToSection('projects')} className="text-left text-slate-700 hover:text-slate-900">
+                {t('nav.projects')}
+              </button>
+              <button onClick={() => scrollToSection('about')} className="text-left text-slate-700 hover:text-slate-900">
+                {t('nav.about')}
+              </button>
+            </div>
+            <div className="mt-6 flex flex-col gap-3">
+              <button
+                onClick={toggleLanguage}
+                className="flex items-center justify-between px-4 py-3 border border-slate-200 rounded-full text-xs uppercase tracking-widest text-slate-600"
+              >
+                <span className="flex items-center gap-2">
+                  <Globe size={14} />
+                  {language === 'fi' ? 'Finnish' : 'English'}
+                </span>
+                <span className="text-slate-400">{language === 'fi' ? 'EN' : 'FI'}</span>
+              </button>
+              <a
+                href="tel:+358XXXXXXXX"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 border border-slate-900 text-slate-900 rounded-full text-sm font-medium"
+              >
+                <Phone size={16} />
+                {t('nav.call')}
+              </a>
+              <a
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-slate-900 text-white rounded-full text-sm font-medium"
+              >
+                {t('hero.cta.quote')}
+                <ArrowUpRight size={16} />
+              </a>
+            </div>
           </div>
         )}
       </nav>
