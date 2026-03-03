@@ -1,4 +1,4 @@
-import { Menu, X, Phone, Globe, ArrowUpRight } from 'lucide-react';
+import { Menu, X, Phone, Globe } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
@@ -63,10 +63,10 @@ export function Header() {
           <div className="hidden lg:flex items-center gap-3">
             <button
               onClick={toggleLanguage}
-              className="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-900 border border-slate-200 rounded-full text-xs uppercase tracking-widest"
+              className="flex items-center gap-2 px-3 py-2 text-slate-600 hover:text-slate-900 border border-slate-200 rounded-full text-xs tracking-widest"
             >
               <Globe size={14} />
-              {language === 'fi' ? 'Finnish → EN' : 'English → FI'}
+              {language}
             </button>
             <a
               href="tel:+358XXXXXXXX"
@@ -74,13 +74,6 @@ export function Header() {
             >
               <Phone size={16} />
               {t('nav.call')}
-            </a>
-            <a
-              href="#contact"
-              className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 text-white rounded-full text-sm font-medium hover:bg-slate-800 transition-colors"
-            >
-              {t('hero.cta.quote')}
-              <ArrowUpRight size={16} />
             </a>
           </div>
 
@@ -111,13 +104,13 @@ export function Header() {
             <div className="mt-6 flex flex-col gap-3">
               <button
                 onClick={toggleLanguage}
-                className="flex items-center justify-between px-4 py-3 border border-slate-200 rounded-full text-xs uppercase tracking-widest text-slate-600"
+                className="flex items-center justify-between px-4 py-3 border border-slate-200 rounded-full text-xs tracking-widest text-slate-600"
               >
                 <span className="flex items-center gap-2">
                   <Globe size={14} />
-                  {language === 'fi' ? 'Finnish' : 'English'}
+                  {language}
                 </span>
-                <span className="text-slate-400">{language === 'fi' ? 'EN' : 'FI'}</span>
+                <span className="text-slate-400">{language}</span>
               </button>
               <a
                 href="tel:+358XXXXXXXX"
@@ -125,13 +118,6 @@ export function Header() {
               >
                 <Phone size={16} />
                 {t('nav.call')}
-              </a>
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 px-4 py-3 bg-slate-900 text-white rounded-full text-sm font-medium"
-              >
-                {t('hero.cta.quote')}
-                <ArrowUpRight size={16} />
               </a>
             </div>
           </div>

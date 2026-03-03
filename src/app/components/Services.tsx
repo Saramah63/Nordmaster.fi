@@ -11,6 +11,11 @@ export function Services() {
     { icon: PaintBucket, titleKey: 'service.painting.title', descKey: 'service.painting.desc' },
     { icon: Hammer, titleKey: 'service.carpentry.title', descKey: 'service.carpentry.desc' },
     { icon: ClipboardCheck, titleKey: 'service.management.title', descKey: 'service.management.desc' },
+    { icon: ClipboardCheck, titleKey: 'service.planning.title', descKey: 'service.planning.desc' },
+    { icon: ClipboardCheck, titleKey: 'service.execution.title', descKey: 'service.execution.desc' },
+    { icon: ClipboardCheck, titleKey: 'service.consulting.title', descKey: 'service.consulting.desc' },
+    { icon: ClipboardCheck, titleKey: 'service.project.title', descKey: 'service.project.desc' },
+    { icon: ClipboardCheck, titleKey: 'service.delivery.title', descKey: 'service.delivery.desc' },
   ];
 
   return (
@@ -49,32 +54,6 @@ export function Services() {
               </div>
             );
           })}
-        </div>
-
-        <div className="mt-16 grid lg:grid-cols-2 gap-8">
-          <div className="rounded-[28px] border border-slate-200 bg-white p-10 shadow-lg">
-            <div className="text-xs uppercase tracking-[0.4em] text-slate-500 mb-4">
-              {t('service.consulting.title')}
-            </div>
-            <h3 className="text-3xl text-slate-900 mb-4">{t('service.project.title')}</h3>
-            <p className="text-slate-600 mb-4">{t('service.project.desc')}</p>
-            <p className="text-sm text-slate-500">{t('service.consulting.desc')}</p>
-            <a href="#projects" className="inline-flex items-center gap-2 text-sm font-medium text-slate-900">
-              {t('projects.label')}
-              <ArrowUpRight size={16} />
-            </a>
-          </div>
-          <div className="rounded-[28px] border border-slate-200 bg-slate-900 text-white p-10 shadow-xl">
-            <div className="text-xs uppercase tracking-[0.4em] text-slate-300 mb-4">
-              {t('service.delivery.title')}
-            </div>
-            <h3 className="text-3xl mb-4">{t('service.execution.title')}</h3>
-            <p className="text-slate-300 mb-6">{t('service.delivery.desc')}</p>
-            <a href="#contact" className="inline-flex items-center gap-2 text-sm font-medium text-white">
-              {t('contact.label')}
-              <ArrowUpRight size={16} />
-            </a>
-          </div>
         </div>
       </div>
     </section>

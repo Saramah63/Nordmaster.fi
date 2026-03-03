@@ -14,6 +14,9 @@ export function Hero() {
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           <div>
+            <div className="text-xs uppercase tracking-[0.4em] text-slate-500">
+              {t('company.tagline')}
+            </div>
             <div className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/70 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-600">
               <Sparkles size={14} />
               {t('hero.badge')}
