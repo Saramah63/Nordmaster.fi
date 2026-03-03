@@ -148,10 +148,10 @@ export function Contact() {
                   required
                 >
                   <option value="">{t('contact.form.service.select')}</option>
-                  <option value="newbuild">{t('contact.form.service.newbuild')}</option>
-                  <option value="renovation">{t('contact.form.service.renovation')}</option>
-                  <option value="maintenance">{t('contact.form.service.maintenance')}</option>
-                  <option value="carpentry">{t('contact.form.service.carpentry')}</option>
+                  <option value="structures">{t('contact.form.service.structures')}</option>
+                  <option value="stairs">{t('contact.form.service.stairs')}</option>
+                  <option value="welding">{t('contact.form.service.welding')}</option>
+                  <option value="custom">{t('contact.form.service.custom')}</option>
                   <option value="other">{t('contact.form.service.other')}</option>
                 </select>
               </div>

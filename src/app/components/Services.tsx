@@ -5,17 +5,17 @@ export function Services() {
   const { t } = useLanguage();
 
   const services = [
-    { icon: Building2, titleKey: 'service.newbuild.title', descKey: 'service.newbuild.desc' },
-    { icon: Home, titleKey: 'service.renovation.title', descKey: 'service.renovation.desc' },
-    { icon: Wrench, titleKey: 'service.maintenance.title', descKey: 'service.maintenance.desc' },
-    { icon: PaintBucket, titleKey: 'service.painting.title', descKey: 'service.painting.desc' },
-    { icon: Hammer, titleKey: 'service.carpentry.title', descKey: 'service.carpentry.desc' },
-    { icon: ClipboardCheck, titleKey: 'service.management.title', descKey: 'service.management.desc' },
+    { icon: Building2, titleKey: 'service.fabrication.title', descKey: 'service.fabrication.desc' },
+    { icon: Home, titleKey: 'service.welding.title', descKey: 'service.welding.desc' },
+    { icon: Wrench, titleKey: 'service.structures.title', descKey: 'service.structures.desc' },
+    { icon: PaintBucket, titleKey: 'service.stairs.title', descKey: 'service.stairs.desc' },
+    { icon: Hammer, titleKey: 'service.custom.title', descKey: 'service.custom.desc' },
+    { icon: ClipboardCheck, titleKey: 'service.installation.title', descKey: 'service.installation.desc' },
+    { icon: ClipboardCheck, titleKey: 'service.design.title', descKey: 'service.design.desc' },
+    { icon: ClipboardCheck, titleKey: 'service.maintenance.title', descKey: 'service.maintenance.desc' },
+    { icon: ClipboardCheck, titleKey: 'service.consulting.title', descKey: 'service.consulting.desc' },
     { icon: ClipboardCheck, titleKey: 'service.planning.title', descKey: 'service.planning.desc' },
     { icon: ClipboardCheck, titleKey: 'service.execution.title', descKey: 'service.execution.desc' },
-    { icon: ClipboardCheck, titleKey: 'service.consulting.title', descKey: 'service.consulting.desc' },
-    { icon: ClipboardCheck, titleKey: 'service.project.title', descKey: 'service.project.desc' },
-    { icon: ClipboardCheck, titleKey: 'service.delivery.title', descKey: 'service.delivery.desc' },
   ];
 
   return (
