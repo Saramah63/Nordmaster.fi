@@ -40,7 +40,7 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
   return (
     <div className={`relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900 shadow-2xl shadow-black/50 ${className || ''}`}>
       <div className="relative aspect-[4/5] md:aspect-[3/4]">
-        <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-950 to-black" />
+        <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-900 to-black" />
 
         {items.map((item, index) => {
           if (!visibleIndices.has(index)) return null;
@@ -58,7 +58,7 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
                 fill
                 sizes="(max-width: 1024px) 100vw, 45vw"
                 className="object-cover"
-                priority={false}
+                priority={index === activeIndex}
                 onError={() => setFailed((prev) => ({ ...prev, [index]: true }))}
               />
             </div>
@@ -79,7 +79,7 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
             >
               <div className={`absolute inset-0 bg-gradient-to-br ${variant.gradient}`} />
               <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)', backgroundSize: variant.pattern }} />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
               <div className="absolute top-6 left-6 inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/85 px-3 py-2 text-xs uppercase tracking-[0.3em] text-white">
                 <Icon size={14} />
                 {variant.label}
@@ -89,7 +89,7 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
           );
         })}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
       </div>
 
       <div className="absolute top-5 left-5">

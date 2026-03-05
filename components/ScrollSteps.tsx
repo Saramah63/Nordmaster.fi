@@ -92,8 +92,8 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
                   }}
                   className={`relative min-h-[60vh] lg:min-h-[80vh] rounded-3xl border transition-all duration-300 px-6 py-10 md:px-10 ${
                     isActive
-                      ? 'border-white/30 bg-white/10 shadow-2xl shadow-amber-500/15 text-white'
-                      : 'border-white/10 bg-white/5 text-zinc-300 opacity-65'
+                      ? 'border-white/40 bg-white/12 shadow-2xl shadow-amber-500/20 text-white'
+                      : 'border-white/15 bg-white/5 text-zinc-300 opacity-80'
                   }`}
                 >
                   <div className={`absolute left-0 top-10 h-16 w-1 rounded-full ${isActive ? 'bg-amber-400' : 'bg-white/10'}`} />
