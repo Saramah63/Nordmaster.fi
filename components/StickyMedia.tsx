@@ -80,7 +80,7 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
               <div className={`absolute inset-0 bg-gradient-to-br ${variant.gradient}`} />
               <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)', backgroundSize: variant.pattern }} />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
-              <div className="absolute top-6 left-6 inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/60 px-3 py-2 text-xs uppercase tracking-[0.3em] text-zinc-200">
+              <div className="absolute top-6 left-6 inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/85 px-3 py-2 text-xs uppercase tracking-[0.3em] text-white">
                 <Icon size={14} />
                 {variant.label}
               </div>
@@ -93,13 +93,13 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
       </div>
 
       <div className="absolute top-5 left-5">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/70 px-4 py-2 text-xs uppercase tracking-[0.3em] text-zinc-200">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/85 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white">
           {activeItem?.label}
         </div>
       </div>
 
       <div className="absolute bottom-5 left-5 right-5">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-black/60 px-4 py-2 text-xs uppercase tracking-[0.3em] text-zinc-200">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/85 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white">
           {activeItem?.caption}
         </div>
       </div>

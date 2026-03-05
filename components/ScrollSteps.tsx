@@ -63,7 +63,7 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
         <div className="lg:sticky lg:top-28 h-max">
           <div className="flex items-center justify-between mb-6">
             <div className="text-xs uppercase tracking-[0.3em] text-zinc-500">Progress</div>
-            <div className="text-2xl font-semibold text-white">
+            <div className="text-3xl font-semibold text-white">
               {String(activeIndex + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}
             </div>
           </div>
@@ -80,7 +80,7 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
             />
           </div>
 
-          <div className="space-y-10">
+          <div className="space-y-12">
             {steps.map((step, index) => {
               const isActive = index === activeIndex;
               return (
@@ -90,21 +90,22 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
                   ref={(el) => {
                     refs.current[index] = el;
                   }}
-                  className={`min-h-[60vh] lg:min-h-[80vh] rounded-3xl border transition-all duration-300 px-6 py-10 md:px-10 ${
+                  className={`relative min-h-[60vh] lg:min-h-[80vh] rounded-3xl border transition-all duration-300 px-6 py-10 md:px-10 ${
                     isActive
-                      ? 'border-amber-400/60 bg-white/5 shadow-2xl shadow-amber-500/10 text-white'
-                      : 'border-white/10 bg-transparent text-zinc-400 opacity-60'
+                      ? 'border-white/30 bg-white/10 shadow-2xl shadow-amber-500/15 text-white'
+                      : 'border-white/10 bg-white/5 text-zinc-300 opacity-65'
                   }`}
                 >
+                  <div className={`absolute left-0 top-10 h-16 w-1 rounded-full ${isActive ? 'bg-amber-400' : 'bg-white/10'}`} />
                   <div className={`flex items-center gap-3 text-xs uppercase tracking-[0.3em] ${isActive ? 'text-amber-200' : 'text-zinc-500'}`}>
                     <span>{step.label}</span>
                     <span className="h-[1px] flex-1 bg-white/10" />
                   </div>
-                  <h3 className={`mt-4 text-2xl md:text-3xl font-semibold ${isActive ? 'text-white' : 'text-zinc-200'}`}>
+                  <h3 className="mt-4 text-2xl md:text-3xl font-semibold text-white">
                     {step.title}
                   </h3>
-                  <p className={`mt-3 ${isActive ? 'text-zinc-300' : 'text-zinc-500'}`}>{step.body}</p>
-                  <ul className={`mt-6 grid gap-3 text-sm ${isActive ? 'text-zinc-300' : 'text-zinc-500'}`}>
+                  <p className="mt-3 text-zinc-300">{step.body}</p>
+                  <ul className="mt-6 grid gap-3 text-sm text-zinc-300">
                     {step.bullets.map((bullet) => (
                       <li key={bullet} className="flex items-start gap-2">
                         <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400" />
