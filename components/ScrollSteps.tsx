@@ -63,7 +63,7 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
         <div className="lg:sticky lg:top-28 h-max">
           <div className="flex items-center justify-between mb-6">
             <div className="text-xs uppercase tracking-[0.3em] text-zinc-500">Progress</div>
-            <div className="text-3xl font-semibold text-white">
+            <div className="text-4xl font-semibold text-white">
               {String(activeIndex + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}
             </div>
           </div>
@@ -73,7 +73,7 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
         </div>
 
         <div className="relative">
-          <div className="hidden lg:block absolute -left-6 top-0 h-full w-[2px] bg-white/10">
+          <div className="hidden lg:block absolute -left-6 top-0 h-full w-[2px] bg-white/15">
             <div
               className="absolute left-0 w-full bg-amber-400 transition-all duration-500"
               style={{ height: `${((activeIndex + 1) / steps.length) * 100}%` }}
@@ -92,11 +92,11 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
                   }}
                   className={`relative min-h-[60vh] lg:min-h-[80vh] rounded-3xl border transition-all duration-300 px-6 py-10 md:px-10 ${
                     isActive
-                      ? 'border-white/40 bg-white/12 shadow-2xl shadow-amber-500/20 text-white'
-                      : 'border-white/15 bg-white/5 text-zinc-300 opacity-80'
+                      ? 'border-white/40 bg-white/[0.12] text-white shadow-[0_0_40px_rgba(251,191,36,0.18)]'
+                      : 'border-white/20 bg-white/[0.06] text-zinc-300 opacity-65'
                   }`}
                 >
-                  <div className={`absolute left-0 top-10 h-16 w-1 rounded-full ${isActive ? 'bg-amber-400' : 'bg-white/10'}`} />
+                  <div className={`absolute left-0 top-10 h-16 w-1.5 rounded-full ${isActive ? 'bg-amber-400' : 'bg-white/15'}`} />
                   <div className={`flex items-center gap-3 text-xs uppercase tracking-[0.3em] ${isActive ? 'text-amber-200' : 'text-zinc-500'}`}>
                     <span>{step.label}</span>
                     <span className="h-[1px] flex-1 bg-white/10" />

@@ -68,7 +68,7 @@ const STEPS = [
 
 export default function HitsaustyotPage() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
+    <div className="min-h-screen bg-zinc-950 text-zinc-100">
       <header className="sticky top-0 z-40 bg-zinc-950/85 backdrop-blur border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex flex-wrap items-center justify-between gap-4 py-4">
@@ -100,10 +100,10 @@ export default function HitsaustyotPage() {
       <section id="home" className="relative overflow-hidden py-16 lg:py-20">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.4em] text-zinc-300">
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/20 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.4em] text-zinc-200">
               Welding support
             </div>
-            <h1 className="mt-6 text-4xl md:text-6xl font-semibold">Premium on-site welding workforce</h1>
+            <h1 className="mt-6 text-4xl md:text-6xl font-semibold text-white">Premium on-site welding workforce</h1>
             <p className="mt-5 text-lg text-zinc-300">
               Certified teams, safety-first execution, and clear reporting for industrial schedules in Finland.
             </p>
@@ -115,7 +115,7 @@ export default function HitsaustyotPage() {
         <div className="container mx-auto px-4">
           <div className="mb-10">
             <div className="text-xs uppercase tracking-[0.4em] text-zinc-400">Service flow</div>
-            <h2 className="mt-4 text-3xl md:text-5xl font-semibold">Scrollytelling service delivery</h2>
+            <h2 className="mt-4 text-3xl md:text-5xl font-semibold text-white">Scrollytelling service delivery</h2>
             <p className="mt-4 text-zinc-300 max-w-3xl">
               Scroll the steps to see how the media panel changes and the active step highlights.
             </p>

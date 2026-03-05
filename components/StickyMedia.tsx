@@ -38,7 +38,7 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
   const activeItem = items[activeIndex];
 
   return (
-    <div className={`relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-900 shadow-2xl shadow-black/50 ${className || ''}`}>
+    <div className={`relative overflow-hidden rounded-3xl border border-white/20 bg-zinc-900/80 shadow-2xl shadow-black/60 ${className || ''}`}>
       <div className="relative aspect-[4/5] md:aspect-[3/4]">
         <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-900 to-black" />
 
@@ -89,17 +89,17 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
           );
         })}
 
-        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-black/10 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
       </div>
 
       <div className="absolute top-5 left-5">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/85 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-black/90 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white">
           {activeItem?.label}
         </div>
       </div>
 
       <div className="absolute bottom-5 left-5 right-5">
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/85 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white">
+        <div className="inline-flex items-center gap-2 rounded-full border border-white/40 bg-black/90 px-4 py-2 text-xs uppercase tracking-[0.3em] text-white">
           {activeItem?.caption}
         </div>
       </div>
