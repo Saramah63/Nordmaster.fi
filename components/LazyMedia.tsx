@@ -1,6 +1,5 @@
 'use client';
 
-import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
 type Aspect = 'video' | 'square' | 'banner';
@@ -30,6 +29,7 @@ export function LazyMedia({
 }: LazyMediaProps) {
   const ref = useRef<HTMLDivElement | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
     if (!ref.current || isVisible) return;
@@ -58,22 +58,21 @@ export function LazyMedia({
     >
       <div
         className={`absolute inset-0 transition-all duration-700 ease-out ${
-          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
+          isVisible && !hasError ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-2'
         }`}
       >
-        {isVisible ? (
-          <Image
+        {isVisible && !hasError ? (
+          <img
             src={src}
             alt={alt}
-            fill
-            sizes="(max-width: 768px) 100vw, 50vw"
-            className="object-cover"
-            priority={false}
+            loading="lazy"
+            className="h-full w-full object-cover"
+            onError={() => setHasError(true)}
           />
         ) : null}
       </div>
 
-      {!isVisible && (
+      {(!isVisible || hasError) && (
         <div className="absolute inset-0 bg-slate-900/70">
           <div className="absolute inset-0 animate-pulse bg-gradient-to-r from-slate-900 via-slate-800 to-slate-900" />
           <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'linear-gradient(110deg, rgba(255,255,255,0) 0%, rgba(255,255,255,0.08) 50%, rgba(255,255,255,0) 100%)' }} />
