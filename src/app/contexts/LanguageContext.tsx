@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from 'react';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 type Language = 'fi' | 'en';
 
@@ -13,27 +13,74 @@ const translations = {
     // Header
     'nav.home': 'Etusivu',
     'nav.services': 'Palvelut',
-    'nav.projects': 'Referenssit',
-    'nav.about': 'Yritys',
-    'nav.call': 'Soita meille',
+    'nav.process': 'Prosessi',
+    'nav.contact': 'Yhteystiedot',
+    'nav.offer': 'Pyydä tarjous',
     'company.tagline': 'Metallisten rakenteiden valmistus',
     
     // Hero
-    'hero.badge': 'Ammattitaitoista metallityötä',
-    'hero.title1': 'Metallisten',
-    'hero.title2': 'rakenteiden',
-    'hero.title3': 'valmistus',
-    'hero.description': 'Nordmaster Group Oy on erikoistunut metallisten rakenteiden suunnitteluun ja valmistukseen. Toteutamme teräsrakenteet, portaat, kaiteet ja räätälöidyt metallityöt ammattitaidolla.',
-    'hero.cta.quote': 'Pyydä tarjous',
-    'hero.cta.projects': 'Katso referenssit',
+    'hero.title': 'Nordmaster Group',
+    'hero.headline': 'Metallirakentamisen ammattilaiset työmaallesi.',
+    'hero.subline': 'Tarjoamme hitsaus-, särmäys- ja metallirakennusosaajia teollisuus- ja rakennusprojekteihin Varsinais-Suomen ja Satakunnan alueella.',
+    'hero.cta.offer': 'Pyydä tarjous',
+    'hero.cta.call': 'Soita',
+
+    'intro.title': 'Nopeat aloitukset, selkeä toimitus',
+    'intro.body': 'Toimitamme hitsaus-, taivutus- ja teräsrakennuspalvelut työmaavalmiina.',
+    'intro.cta': 'Ota yhteyttä',
     'hero.stat1': 'Vuotta kokemusta',
     'hero.stat2': 'Toteutettua projektia',
     'hero.stat3': 'Ammattityö',
     
     // Services
     'services.label': 'Palvelumme',
-    'services.title': 'Kattavat metallityöpalvelut',
-    'services.description': 'Tarjoamme ammattitaitoisia metallityöpalveluita teollisuudelle ja yksityisasiakkaille. Suunnittelusta valmistukseen ja asennukseen - kaikki saman katon alla.',
+    'services.title': 'Palvelut',
+    'services.description': 'Kolme ydinaluetta työmaillesi.',
+
+    'services.cards.welding.title': 'Hitsaus',
+    'services.cards.welding.desc': 'Ammattitaitoinen MIG-, MAG- ja TIG-hitsaus teräsrakenteisiin, korjauksiin ja työmaavalmistukseen.',
+    'services.cards.bending.title': 'Särmäys',
+    'services.cards.bending.desc': 'Tarkka metallin ja levyn särmäys teollisuus- ja rakennusprojekteihin.',
+    'services.cards.construction.title': 'Metallirakentaminen',
+    'services.cards.construction.desc': 'Teräsrakenteiden valmistus, asennus ja metallirakentaminen rakennus- ja teollisuuskohteisiin.',
+    'services.cards.support.title': 'Työmaapalvelut',
+    'services.cards.support.desc': 'Aikataulutettu työvoima ja tuki työmaan kriittisiin vaiheisiin.',
+
+    'services.fullbleed.cta': 'Pyydä tarjous',
+    'services.fullbleed.welding.eyebrow': 'HITSAUS',
+    'services.fullbleed.welding.title': 'Hitsaus',
+    'services.fullbleed.welding.description': 'Ammattitaitoinen MIG-, MAG- ja TIG-hitsaus teräsrakenteisiin, korjauksiin ja työmaavalmistukseen.',
+    'services.fullbleed.welding.bullet1': 'MIG / MAG / TIG',
+    'services.fullbleed.welding.bullet2': 'Työmaavalmistus ja korjaukset',
+    'services.fullbleed.welding.bullet3': 'Nopea aloitus, selkeä koordinointi',
+    'services.fullbleed.welding.alt': 'Hitsaustiimi työmaalla',
+
+    'services.fullbleed.bending.eyebrow': 'SÄRMÄYS',
+    'services.fullbleed.bending.title': 'Särmäys',
+    'services.fullbleed.bending.description': 'Tarkka metallin ja levyn särmäys teollisuus- ja rakennusprojekteihin.',
+    'services.fullbleed.bending.bullet1': 'Tarkka muotoilu',
+    'services.fullbleed.bending.bullet2': 'Aikatauluun sopiva toimitus',
+    'services.fullbleed.bending.bullet3': 'Tarvittaessa työmaakorjaukset',
+    'services.fullbleed.bending.alt': 'Metallin taivutus',
+
+    'services.fullbleed.construction.eyebrow': 'METALLIRAKENTAMINEN',
+    'services.fullbleed.construction.title': 'Metallirakentaminen',
+    'services.fullbleed.construction.description': 'Teräsrakenteiden valmistus, asennus ja metallirakentaminen rakennus- ja teollisuuskohteisiin.',
+    'services.fullbleed.construction.bullet1': 'Valmistus ja sovitus',
+    'services.fullbleed.construction.bullet2': 'Asennus ja korjaukset',
+    'services.fullbleed.construction.bullet3': 'Työmaavalmiit tiimit',
+    'services.fullbleed.construction.alt': 'Teräsrakentamisen työmaa',
+
+    'map.label': 'KARTTA',
+    'map.title': 'Toiminta-alue',
+
+    'services.fullbleed.support.eyebrow': 'TYÖMAATUKI',
+    'services.fullbleed.support.title': 'Aikataulussa pysyvä työmaatoimitus',
+    'services.fullbleed.support.description': 'Resurssit nopeasti työmaalle.',
+    'services.fullbleed.support.bullet1': 'Nopea saatavuus',
+    'services.fullbleed.support.bullet2': 'Selkeä työn rajaus',
+    'services.fullbleed.support.bullet3': 'Kokeneet tekijät paikan päälle',
+    'services.fullbleed.support.alt': 'Työmaatuki ja resursointi',
     
     // Metal Services
     'service.fabrication.title': 'Metallien valmistus',
@@ -60,10 +107,17 @@ const translations = {
     'service.execution.title': 'Toteutus',
     'service.execution.desc': 'Laadukas toteutus moderneilla laitteilla ja kokeneen tiimin toimesta. Aikataulussa ja budjetissa.',
     
-    // Projects
-    'projects.label': 'Referenssit',
-    'projects.title': 'Toteutettuja projekteja',
-    'projects.description': 'Olemme toteuttaneet lukuisia metallityöprojekteja teollisuudelle ja yksityisasiakkaille. Katso esimerkkejä töistämme.',
+    // Story
+    'how.label': 'MITEN TOIMIMME',
+    'how.heading': 'Miten toimimme',
+    'how.subtitle': 'Pyyntö → Tarjous → Aloitus työmaalla',
+    'how.step1.title': 'Pyyntö',
+    'how.step1.desc': 'Lähetä projektin tiedot ja aikataulu.',
+    'how.step2.title': 'Tarjous',
+    'how.step2.desc': 'Vahvistamme saatavuuden ja lähetämme selkeän tarjouksen.',
+    'how.step3.title': 'Aloitus työmaalla',
+    'how.step3.desc': 'Tiimimme aloittaa nopeasti ja toimii osana projektia.',
+
     
     'project.1.title': 'Teollisuushallin teräsrakenne',
     'project.1.category': 'Teräsrakenteet',
@@ -86,6 +140,51 @@ const translations = {
     
     'projects.cta.question': 'Haluatko toteuttaa oman projektisi?',
     'projects.cta.button': 'Ota yhteyttä',
+
+    'contacts.direct': 'Suorat yhteydet',
+    'contacts.call.aigars': 'Soita Aigarsille',
+    'contacts.call.martins': 'Soita Martinsille',
+    'contacts.email': 'Sähköposti',
+
+    'welding.steps.1.label': 'HITSAUS TYÖMAALLA',
+    'welding.steps.1.title': 'Hitsaustiimit teräsrakenteisiin ja korjauksiin',
+    'welding.steps.1.body': 'Työmaavalmiit hitsaajat teräsrakenteisiin, asennuksiin ja korjaustöihin – teollisen aikataulun mukaisesti.',
+    'welding.steps.1.bullet1': 'MIG / MAG / TIG teräsrakenteille',
+    'welding.steps.1.bullet2': 'Korjaukset, sovitus (fit-up) ja työmaafabrikointi',
+    'welding.steps.1.bullet3': 'Nopea aloitus ja selkeä työn rajaus',
+    'welding.steps.1.media.alt': 'Hitsaustiimi työmaalla',
+    'welding.steps.1.media.overlay': 'Hitsaustiimi',
+    'welding.steps.1.media.caption': 'Mukautuu nopeasti työmaan toimintatapaan.',
+
+    'welding.steps.2.label': 'TURVALLISUUS ENNEN KAIKKEA',
+    'welding.steps.2.title': 'Vaatimustenmukainen työ ja selkeä raportointi',
+    'welding.steps.2.body': 'Turvallisuuskäytännöt ja läpinäkyvät päivitykset pitävät työn ennakoitavana ja johdon ajan tasalla.',
+    'welding.steps.2.bullet1': 'PPE-valmius ja työmaan ohjeiden noudattaminen',
+    'welding.steps.2.bullet2': 'Luvat ja turvallisuusrutiinit kunnossa',
+    'welding.steps.2.bullet3': 'Selkeät etenemispäivitykset',
+    'welding.steps.2.media.alt': 'Turvallisuus työmaalla',
+    'welding.steps.2.media.overlay': 'Turvallisuus',
+    'welding.steps.2.media.caption': 'Ei yllätyksiä työmaalla.',
+
+    'welding.steps.3.label': 'JOUSTAVA RESURSSOINTI',
+    'welding.steps.3.title': 'Skaalaa tarpeen mukaan',
+    'welding.steps.3.body': 'Lyhytaikainen tuki kiirepiikkeihin tai pitkäaikainen resursointi tasaisen tuotannon varmistamiseen.',
+    'welding.steps.3.bullet1': 'Vuokraresurssi deadlineihin',
+    'welding.steps.3.bullet2': 'Pitkäkestoiset henkilöstöratkaisut',
+    'welding.steps.3.bullet3': 'Selkeä aikataulutus ja luovutus',
+    'welding.steps.3.media.alt': 'Joustava toimitus',
+    'welding.steps.3.media.overlay': 'Joustavuus',
+    'welding.steps.3.media.caption': 'Oikeat tekijät, oikeaksi ajaksi.',
+
+    'welding.steps.4.label': 'NOPEA KÄYNNISTYS',
+    'welding.steps.4.title': 'Pyyntö → tarjous → aloitus',
+    'welding.steps.4.body': 'Lähetä työn kuvaus ja sijainti – varmistamme saatavuuden ja seuraavat askeleet nopeasti.',
+    'welding.steps.4.bullet1': 'Nopea saatavuustarkistus',
+    'welding.steps.4.bullet2': 'Selkeä tarjous ja aloituspäivä',
+    'welding.steps.4.bullet3': 'Suorat yhteydet, vähän kitkaa',
+    'welding.steps.4.media.alt': 'Nopea käynnistys',
+    'welding.steps.4.media.overlay': 'Pyydä tarjous',
+    'welding.steps.4.media.caption': 'Pyynnöstä toteutukseen – nopeasti.',
     
     // About
     'about.label': 'Meistä',
@@ -118,31 +217,17 @@ const translations = {
     'testimonial3.text': 'Nordmaster Group toteutti laiturirakenteemme erinomaisesti. Ruostumaton teräs ja laadukas työ. Suosittelen lämpimästi!',
     
     // Contact
-    'contact.label': 'Ota yhteyttä',
-    'contact.title': 'Aloitetaan projektisi',
-    'contact.description': 'Pyydä ilmainen tarjous tai kysy lisätietoja palveluistamme. Vastaamme yhteydenottoon nopeasti.',
-    'contact.phone.title': 'Soita meille',
-    'contact.phone.hours': 'Ma-Pe 8:00-16:00',
-    'contact.email.title': 'Lähetä sähköpostia',
-    'contact.email.response': 'Vastaamme 24h sisällä',
-    'contact.location.title': 'Toimialue',
-    'contact.location.area': 'Koko Suomi',
-    'contact.location.desc': 'Palvelemme ympäri Suomen',
-    'contact.hours.title': 'Aukioloajat',
-    'contact.hours.days': 'Maanantai - Perjantai',
-    'contact.hours.time': '8:00 - 16:00',
-    'contact.company.title': 'Yritystiedot',
-    'contact.company.name': 'Yritys:',
-    'contact.company.id': 'Y-tunnus:',
-    'contact.company.type': 'Yritysmuoto:',
-    'contact.company.type.value': 'Osakeyhtiö',
-    'contact.company.industry': 'Toimiala:',
-    'contact.company.industry.value': 'Metallityöt',
+    'contact.label': 'Yhteystiedot',
+    'contact.title': 'Yhteystiedot',
+    'contact.description': 'Ota suoraan yhteyttä.',
+    'contact.person1': 'Aigars Cerpinskis',
+    'contact.person2': 'Martins Cerpinskis',
+    'contact.call': 'Soita',
     'contact.form.title': 'Pyydä tarjous',
-    'contact.form.subtitle': 'Täytä lomake niin otamme sinuun yhteyttä pikaisesti.',
+    'contact.form.subtitle': 'Lyhyt viesti riittää.',
     'contact.form.name': 'Nimi',
     'contact.form.name.placeholder': 'Etunimi Sukunimi',
-    'contact.form.phone': 'Puhelin',
+    'contact.form.phone': 'Puhelin (valinnainen)',
     'contact.form.phone.placeholder': '+358 XX XXX XXXX',
     'contact.form.email': 'Sähköposti',
     'contact.form.email.placeholder': 'nimi@email.fi',
@@ -156,15 +241,10 @@ const translations = {
     'contact.form.message': 'Viesti',
     'contact.form.message.placeholder': 'Kerro lisää projektistasi...',
     'contact.form.submit': 'Lähetä tarjouspyyntö',
-    'contact.form.note': 'Vastaamme kaikkiin yhteydenottopyyntöihin 24 tunnin sisällä.',
     
     // Footer
-    'footer.description': 'Ammattitaitoista metallityötä ja teräsrakenteita. Luotettava kumppani projektillesi.',
-    'footer.services': 'Palvelut',
-    'footer.company': 'Yritys',
+    'footer.description': 'Metallirakentamisen tiimit työmaallesi.',
     'footer.contact': 'Yhteystiedot',
-    'footer.about': 'Meistä',
-    'footer.references': 'Referenssit',
     'footer.getquote': 'Pyydä tarjous',
     'footer.copyright': '© 2026 Nordmaster Group Oy. Kaikki oikeudet pidätetään.',
     'footer.legal': 'Osakeyhtiö • Metallityöt',
@@ -177,27 +257,74 @@ const translations = {
     // Header
     'nav.home': 'Home',
     'nav.services': 'Services',
-    'nav.projects': 'Projects',
-    'nav.about': 'About',
-    'nav.call': 'Call Us',
+    'nav.process': 'Process',
+    'nav.contact': 'Contact',
+    'nav.offer': 'Request an offer',
     'company.tagline': 'Metal Structure Fabrication',
     
     // Hero
-    'hero.badge': 'Professional metal work',
-    'hero.title1': 'Metal',
-    'hero.title2': 'structure',
-    'hero.title3': 'fabrication',
-    'hero.description': 'Nordmaster Group Oy specializes in the design and fabrication of metal structures. We deliver steel structures, stairs, railings, and custom metal works with expertise.',
-    'hero.cta.quote': 'Request a Quote',
-    'hero.cta.projects': 'View Projects',
+    'hero.title': 'Nordmaster Group',
+    'hero.headline': 'Metal construction crews ready for your site.',
+    'hero.subline': 'Site-ready welding, bending, and metal construction teams supporting industrial projects in Southwest Finland and Satakunta.',
+    'hero.cta.offer': 'Request an offer',
+    'hero.cta.call': 'Call',
+
+    'intro.title': 'Fast start, clear delivery',
+    'intro.body': 'We deliver welding, bending, and steel construction services ready on-site.',
+    'intro.cta': 'Contact us',
     'hero.stat1': 'Years Experience',
     'hero.stat2': 'Completed Projects',
     'hero.stat3': 'Professional Work',
     
     // Services
     'services.label': 'Our Services',
-    'services.title': 'Comprehensive Metal Work Services',
-    'services.description': 'We offer professional metal work services for industry and private clients. From design to fabrication and installation - all under one roof.',
+    'services.title': 'Services',
+    'services.description': 'Three core service areas.',
+
+    'services.cards.welding.title': 'Welding',
+    'services.cards.welding.desc': 'Professional MIG, MAG, and TIG welding for structural steel, fabrication, and repairs on construction sites.',
+    'services.cards.bending.title': 'Bending',
+    'services.cards.bending.desc': 'Accurate sheet and metal bending services supporting industrial construction and fabrication projects.',
+    'services.cards.construction.title': 'Metal construction',
+    'services.cards.construction.desc': 'Steel fabrication, installation, and structural metalwork for construction sites and industrial projects.',
+    'services.cards.support.title': 'Site Support',
+    'services.cards.support.desc': 'Scheduled workforce support for critical site phases.',
+
+    'services.fullbleed.cta': 'Request an offer',
+    'services.fullbleed.welding.eyebrow': 'WELDING',
+    'services.fullbleed.welding.title': 'Welding',
+    'services.fullbleed.welding.description': 'Professional MIG, MAG, and TIG welding for structural steel, fabrication, and repairs on construction sites.',
+    'services.fullbleed.welding.bullet1': 'MIG / MAG / TIG',
+    'services.fullbleed.welding.bullet2': 'On-site fabrication & repairs',
+    'services.fullbleed.welding.bullet3': 'Fast start, clear coordination',
+    'services.fullbleed.welding.alt': 'Welding team on site',
+
+    'services.fullbleed.bending.eyebrow': 'BENDING',
+    'services.fullbleed.bending.title': 'Bending',
+    'services.fullbleed.bending.description': 'Accurate sheet and metal bending services supporting industrial construction and fabrication projects.',
+    'services.fullbleed.bending.bullet1': 'Precise forming',
+    'services.fullbleed.bending.bullet2': 'Schedule-aligned delivery',
+    'services.fullbleed.bending.bullet3': 'On-site adjustments when needed',
+    'services.fullbleed.bending.alt': 'Metal bending work',
+
+    'services.fullbleed.construction.eyebrow': 'METAL CONSTRUCTION',
+    'services.fullbleed.construction.title': 'Metal construction',
+    'services.fullbleed.construction.description': 'Steel fabrication, installation, and structural metalwork for construction sites and industrial projects.',
+    'services.fullbleed.construction.bullet1': 'Fabrication & fit-up',
+    'services.fullbleed.construction.bullet2': 'Installation & repairs',
+    'services.fullbleed.construction.bullet3': 'Site-ready teams',
+    'services.fullbleed.construction.alt': 'Steel construction site',
+
+    'map.label': 'MAP',
+    'map.title': 'Service area',
+
+    'services.fullbleed.support.eyebrow': 'SITE SUPPORT',
+    'services.fullbleed.support.title': 'Keep site delivery on schedule',
+    'services.fullbleed.support.description': 'Fast staffing when timelines tighten.',
+    'services.fullbleed.support.bullet1': 'Rapid availability',
+    'services.fullbleed.support.bullet2': 'Clear work scope',
+    'services.fullbleed.support.bullet3': 'Experienced crews on-site',
+    'services.fullbleed.support.alt': 'On-site support',
     
     // Metal Services
     'service.fabrication.title': 'Metal Fabrication',
@@ -224,10 +351,17 @@ const translations = {
     'service.execution.title': 'Execution',
     'service.execution.desc': 'Quality execution with modern equipment and experienced team. On schedule and on budget.',
     
-    // Projects
-    'projects.label': 'Projects',
-    'projects.title': 'Completed Projects',
-    'projects.description': 'We have completed numerous metal work projects for industry and private clients. See examples of our work.',
+    // Story
+    'how.label': 'HOW WE WORK',
+    'how.heading': 'How we work',
+    'how.subtitle': 'Request → Offer → Start on-site',
+    'how.step1.title': 'Request',
+    'how.step1.desc': 'Send your project scope and schedule.',
+    'how.step2.title': 'Offer',
+    'how.step2.desc': 'We confirm availability and provide a clear offer.',
+    'how.step3.title': 'Start on-site',
+    'how.step3.desc': 'Our team integrates quickly with your project.',
+
     
     'project.1.title': 'Industrial Hall Steel Structure',
     'project.1.category': 'Steel Structures',
@@ -250,6 +384,51 @@ const translations = {
     
     'projects.cta.question': 'Want to realize your own project?',
     'projects.cta.button': 'Contact Us',
+
+    'contacts.direct': 'Direct contacts',
+    'contacts.call.aigars': 'Call Aigars',
+    'contacts.call.martins': 'Call Martins',
+    'contacts.email': 'Email',
+
+    'welding.steps.1.label': 'ON-SITE WELDING',
+    'welding.steps.1.title': 'Welding teams for steel structures and repairs',
+    'welding.steps.1.body': 'Site-ready welding workforce for structural steel, installations, and repair work—aligned with industrial timelines.',
+    'welding.steps.1.bullet1': 'MIG / MAG / TIG for structural steel',
+    'welding.steps.1.bullet2': 'Repairs, fit-up, and on-site fabrication support',
+    'welding.steps.1.bullet3': 'Fast onboarding and clear scope',
+    'welding.steps.1.media.alt': 'Welding workforce on site',
+    'welding.steps.1.media.overlay': 'Welding workforce',
+    'welding.steps.1.media.caption': 'Integrates fast into your workflow.',
+
+    'welding.steps.2.label': 'SAFETY-FIRST',
+    'welding.steps.2.title': 'Compliance-driven work, clean reporting',
+    'welding.steps.2.body': 'Safety procedures and transparent updates keep delivery predictable and supervisors informed.',
+    'welding.steps.2.bullet1': 'PPE-ready, aligned with site rules',
+    'welding.steps.2.bullet2': 'Work permits & routines followed',
+    'welding.steps.2.bullet3': 'Clear progress updates',
+    'welding.steps.2.media.alt': 'Safety and compliance',
+    'welding.steps.2.media.overlay': 'Safety & compliance',
+    'welding.steps.2.media.caption': 'Zero surprises on-site.',
+
+    'welding.steps.3.label': 'FLEXIBLE STAFFING',
+    'welding.steps.3.title': 'Scale up or down based on workload',
+    'welding.steps.3.body': 'Short-term support for deadlines or stable long-term staffing for continuous throughput.',
+    'welding.steps.3.bullet1': 'Workforce rental for peaks',
+    'welding.steps.3.bullet2': 'Long-term staffing options',
+    'welding.steps.3.bullet3': 'Clear scheduling and handover',
+    'welding.steps.3.media.alt': 'Flexible delivery',
+    'welding.steps.3.media.overlay': 'Flexible delivery',
+    'welding.steps.3.media.caption': 'Right people, right duration.',
+
+    'welding.steps.4.label': 'FAST START',
+    'welding.steps.4.title': 'Request → offer → start on-site',
+    'welding.steps.4.body': 'Send scope and location, we confirm availability and next steps quickly.',
+    'welding.steps.4.bullet1': 'Fast availability check',
+    'welding.steps.4.bullet2': 'Clear start date',
+    'welding.steps.4.bullet3': 'Direct contacts',
+    'welding.steps.4.media.alt': 'Fast start',
+    'welding.steps.4.media.overlay': 'Get an offer',
+    'welding.steps.4.media.caption': 'From request to action—fast.',
     
     // About
     'about.label': 'About Us',
@@ -283,30 +462,16 @@ const translations = {
     
     // Contact
     'contact.label': 'Contact',
-    'contact.title': "Let's Start Your Project",
-    'contact.description': 'Request a free quote or ask about our services. We respond to inquiries quickly.',
-    'contact.phone.title': 'Call Us',
-    'contact.phone.hours': 'Mon-Fri 8:00-16:00',
-    'contact.email.title': 'Send Email',
-    'contact.email.response': 'We respond within 24h',
-    'contact.location.title': 'Service Area',
-    'contact.location.area': 'All Finland',
-    'contact.location.desc': 'We serve nationwide',
-    'contact.hours.title': 'Business Hours',
-    'contact.hours.days': 'Monday - Friday',
-    'contact.hours.time': '8:00 - 16:00',
-    'contact.company.title': 'Company Information',
-    'contact.company.name': 'Company:',
-    'contact.company.id': 'Business ID:',
-    'contact.company.type': 'Company Type:',
-    'contact.company.type.value': 'Limited Liability Company',
-    'contact.company.industry': 'Industry:',
-    'contact.company.industry.value': 'Metal Works',
+    'contact.title': 'Contact',
+    'contact.description': 'Talk directly with the team.',
+    'contact.person1': 'Aigars Cerpinskis',
+    'contact.person2': 'Martins Cerpinskis',
+    'contact.call': 'Call',
     'contact.form.title': 'Request a Quote',
-    'contact.form.subtitle': 'Fill out the form and we will contact you shortly.',
+    'contact.form.subtitle': 'Short and clear is enough.',
     'contact.form.name': 'Name',
     'contact.form.name.placeholder': 'First Name Last Name',
-    'contact.form.phone': 'Phone',
+    'contact.form.phone': 'Phone (optional)',
     'contact.form.phone.placeholder': '+358 XX XXX XXXX',
     'contact.form.email': 'Email',
     'contact.form.email.placeholder': 'name@email.com',
@@ -323,13 +488,9 @@ const translations = {
     'contact.form.note': 'We respond to all inquiries within 24 hours.',
     
     // Footer
-    'footer.description': 'Professional metal work and steel structures. Reliable partner for your project.',
-    'footer.services': 'Services',
-    'footer.company': 'Company',
+    'footer.description': 'Metal construction crews ready on-site.',
     'footer.contact': 'Contact',
-    'footer.about': 'About Us',
-    'footer.references': 'Projects',
-    'footer.getquote': 'Request Quote',
+    'footer.getquote': 'Request an offer',
     'footer.copyright': '© 2026 Nordmaster Group Oy. All rights reserved.',
     'footer.legal': 'Limited Liability Company • Metal Works',
     
@@ -342,17 +503,42 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
-  const [language, setLanguage] = useState<Language>('fi');
+  const [language, setLanguageState] = useState<Language>('en');
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    const path = window.location.pathname;
+    if (path.startsWith('/fi')) {
+      setLanguageState('fi');
+      return;
+    }
+    if (path.startsWith('/en')) {
+      setLanguageState('en');
+      return;
+    }
+    window.history.replaceState(null, '', '/en');
+    setLanguageState('en');
+  }, []);
+
+  const setLanguage = (lang: Language) => {
+    setLanguageState(lang);
+    if (typeof window === 'undefined') return;
+    const { pathname, search, hash } = window.location;
+    const parts = pathname.split('/');
+    if (parts[1] === 'en' || parts[1] === 'fi') {
+      parts[1] = lang;
+    } else {
+      parts.splice(1, 0, lang);
+    }
+    const nextPath = parts.join('/') || `/${lang}`;
+    window.history.replaceState(null, '', `${nextPath}${search}${hash}`);
+  };
 
   const t = (key: string): string => {
     return translations[language][key as keyof typeof translations.fi] || key;
   };
 
-  return (
-    <LanguageContext.Provider value={{ language, setLanguage, t }}>
-      {children}
-    </LanguageContext.Provider>
-  );
+  return <LanguageContext.Provider value={{ language, setLanguage, t }}>{children}</LanguageContext.Provider>;
 }
 
 export function useLanguage() {

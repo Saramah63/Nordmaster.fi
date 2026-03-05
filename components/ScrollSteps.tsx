@@ -17,9 +17,11 @@ interface StepItem {
 
 interface ScrollStepsProps {
   steps: StepItem[];
+  progressLabel: string;
+  debugLabel: string;
 }
 
-export function ScrollSteps({ steps }: ScrollStepsProps) {
+export function ScrollSteps({ steps, progressLabel, debugLabel }: ScrollStepsProps) {
   const [activeIndex, setActiveIndex] = useState(0);
   const refs = useRef<(HTMLElement | null)[]>([]);
 
@@ -60,9 +62,9 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
   return (
     <>
       <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12">
-        <div className="lg:sticky lg:top-28 h-max">
+        <div className="lg:sticky lg:top-28 h-max w-full">
           <div className="flex items-center justify-between mb-6">
-            <div className="text-xs uppercase tracking-[0.3em] text-zinc-500">Progress</div>
+            <div className="text-xs uppercase tracking-[0.3em] text-zinc-500">{progressLabel}</div>
             <div className="text-4xl font-semibold text-white">
               {String(activeIndex + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}
             </div>
@@ -101,9 +103,7 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
                     <span>{step.label}</span>
                     <span className="h-[1px] flex-1 bg-white/10" />
                   </div>
-                  <h3 className="mt-4 text-2xl md:text-3xl font-semibold text-white">
-                    {step.title}
-                  </h3>
+                  <h3 className="mt-4 text-2xl md:text-3xl font-semibold text-white">{step.title}</h3>
                   <p className="mt-3 text-zinc-300">{step.body}</p>
                   <ul className="mt-6 grid gap-3 text-sm text-zinc-300">
                     {step.bullets.map((bullet) => (
@@ -122,7 +122,7 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
 
       {process.env.NODE_ENV !== 'production' && (
         <div className="fixed bottom-4 right-4 z-50 rounded-full border border-white/20 bg-black/80 px-4 py-2 text-xs text-white">
-          Active step: {activeIndex + 1}
+          {debugLabel}: {activeIndex + 1}
         </div>
       )}
     </>

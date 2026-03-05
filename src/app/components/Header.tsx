@@ -1,15 +1,25 @@
-import { Menu, X, Phone, Globe } from 'lucide-react';
+import { Menu, X } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 export function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const [activeSection, setActiveSection] = useState<'top' | 'services' | 'process' | 'contact'>('top');
   const { language, setLanguage, t } = useLanguage();
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
+      const sections = ['top', 'services', 'process', 'contact'] as const;
+      const offset = window.scrollY + 120;
+      for (let i = sections.length - 1; i >= 0; i -= 1) {
+        const section = document.getElementById(sections[i]);
+        if (section && section.offsetTop <= offset) {
+          setActiveSection(sections[i]);
+          break;
+        }
+      }
     };
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
@@ -23,13 +33,9 @@ export function Header() {
     }
   };
 
-  const toggleLanguage = () => {
-    setLanguage(language === 'fi' ? 'en' : 'fi');
-  };
-
   return (
     <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-      isScrolled ? 'bg-white shadow-lg py-3' : 'bg-white/90 backdrop-blur-md py-4'
+      isScrolled ? 'bg-zinc-950/95 border-b border-white/10 py-3' : 'bg-zinc-950/80 backdrop-blur-md py-4'
     }`}>
       <nav className="container mx-auto px-4">
         <div className="flex items-center justify-between">
@@ -38,49 +44,66 @@ export function Header() {
               <span className="text-white font-bold text-2xl">N</span>
             </div>
             <div>
-              <span className="text-xl font-bold text-slate-900 block leading-none">Nordmaster Group</span>
-              <span className="text-xs text-slate-600">{t('company.tagline')}</span>
+              <span className="text-xl font-bold text-white block leading-none">Nordmaster Group</span>
+              <span className="text-xs text-zinc-400">{t('company.tagline')}</span>
             </div>
           </div>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-10">
-            <button onClick={() => scrollToSection('home')} className="text-slate-700 hover:text-slate-900 font-medium transition-colors relative group">
-              {t('nav.home')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-slate-900 transition-all group-hover:w-full"></span>
-            </button>
-            <button onClick={() => scrollToSection('services')} className="text-slate-700 hover:text-slate-900 font-medium transition-colors relative group">
-              {t('nav.services')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-slate-900 transition-all group-hover:w-full"></span>
-            </button>
-            <button onClick={() => scrollToSection('projects')} className="text-slate-700 hover:text-slate-900 font-medium transition-colors relative group">
-              {t('nav.projects')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-slate-900 transition-all group-hover:w-full"></span>
-            </button>
-            <button onClick={() => scrollToSection('about')} className="text-slate-700 hover:text-slate-900 font-medium transition-colors relative group">
-              {t('nav.about')}
-              <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-slate-900 transition-all group-hover:w-full"></span>
-            </button>
-            
-            {/* Language Switcher */}
             <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 px-4 py-2 text-slate-700 hover:text-slate-900 font-medium transition-colors border-2 border-slate-200 rounded-lg hover:border-slate-300"
+              onClick={() => scrollToSection('top')}
+              className={`navLink ${activeSection === 'top' ? 'navLinkActive' : ''}`}
             >
-              <Globe size={18} />
-              <span className="uppercase">{language}</span>
+              {t('nav.home')}
+            </button>
+            <button
+              onClick={() => scrollToSection('services')}
+              className={`navLink ${activeSection === 'services' ? 'navLinkActive' : ''}`}
+            >
+              {t('nav.services')}
+            </button>
+            <button
+              onClick={() => scrollToSection('process')}
+              className={`navLink ${activeSection === 'process' ? 'navLinkActive' : ''}`}
+            >
+              {t('nav.process')}
+            </button>
+            <button
+              onClick={() => scrollToSection('contact')}
+              className={`navLink ${activeSection === 'contact' ? 'navLinkActive' : ''}`}
+            >
+              {t('nav.contact')}
             </button>
 
-            <a href="tel:+358XXXXXXXX" className="flex items-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition-all shadow-md hover:shadow-lg">
-              <Phone size={18} />
-              <span className="font-medium">{t('nav.call')}</span>
+            <div className="flex items-center gap-2 border border-white/20 rounded-full px-2 py-1">
+              <button
+                onClick={() => setLanguage('fi')}
+                className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                  language === 'fi' ? 'bg-white text-zinc-950' : 'text-zinc-300'
+                }`}
+              >
+                FI
+              </button>
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                  language === 'en' ? 'bg-white text-zinc-950' : 'text-zinc-300'
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
+            <a href="#contact" className="flex items-center gap-2 bg-amber-400 text-zinc-950 px-5 py-2.5 rounded-full hover:bg-amber-300 transition-all shadow-md hover:shadow-lg text-sm font-semibold">
+              {t('nav.offer')}
             </a>
           </div>
 
           {/* Mobile Menu Button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden text-slate-700 hover:text-slate-900 p-2"
+            className="lg:hidden text-zinc-200 hover:text-white p-2"
           >
             {isMenuOpen ? <X size={28} /> : <Menu size={28} />}
           </button>
@@ -88,33 +111,41 @@ export function Header() {
 
         {/* Mobile Navigation */}
         {isMenuOpen && (
-          <div className="lg:hidden mt-6 pb-6 space-y-4 border-t border-slate-200 pt-6">
-            <button onClick={() => scrollToSection('home')} className="block w-full text-left text-slate-700 hover:text-slate-900 py-2 font-medium">
+          <div className="lg:hidden mt-6 pb-6 space-y-4 border-t border-white/10 pt-6">
+            <button onClick={() => scrollToSection('top')} className="block w-full text-left navLink">
               {t('nav.home')}
             </button>
-            <button onClick={() => scrollToSection('services')} className="block w-full text-left text-slate-700 hover:text-slate-900 py-2 font-medium">
+            <button onClick={() => scrollToSection('services')} className="block w-full text-left navLink">
               {t('nav.services')}
             </button>
-            <button onClick={() => scrollToSection('projects')} className="block w-full text-left text-slate-700 hover:text-slate-900 py-2 font-medium">
-              {t('nav.projects')}
+            <button onClick={() => scrollToSection('process')} className="block w-full text-left navLink">
+              {t('nav.process')}
             </button>
-            <button onClick={() => scrollToSection('about')} className="block w-full text-left text-slate-700 hover:text-slate-900 py-2 font-medium">
-              {t('nav.about')}
-            </button>
-            
-            {/* Mobile Language Switcher */}
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 w-full px-4 py-3 text-slate-700 hover:text-slate-900 font-medium border-2 border-slate-200 rounded-lg hover:border-slate-300"
-            >
-              <Globe size={18} />
-              <span className="uppercase">{language === 'fi' ? 'Finnish' : 'English'}</span>
-              <span className="ml-auto text-sm text-slate-500">→ {language === 'fi' ? 'EN' : 'FI'}</span>
+            <button onClick={() => scrollToSection('contact')} className="block w-full text-left navLink">
+              {t('nav.contact')}
             </button>
 
-            <a href="tel:+358XXXXXXXX" className="flex items-center justify-center gap-2 bg-slate-900 text-white px-6 py-3 rounded-lg hover:bg-slate-800 transition-all">
-              <Phone size={18} />
-              <span className="font-medium">{t('nav.call')}</span>
+            <div className="flex items-center gap-2 border border-white/20 rounded-full px-2 py-1 w-fit">
+              <button
+                onClick={() => setLanguage('fi')}
+                className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                  language === 'fi' ? 'bg-white text-zinc-950' : 'text-zinc-300'
+                }`}
+              >
+                FI
+              </button>
+              <button
+                onClick={() => setLanguage('en')}
+                className={`px-3 py-1 text-xs font-semibold rounded-full ${
+                  language === 'en' ? 'bg-white text-zinc-950' : 'text-zinc-300'
+                }`}
+              >
+                EN
+              </button>
+            </div>
+
+            <a href="#contact" className="flex items-center justify-center gap-2 bg-amber-400 text-zinc-950 px-6 py-3 rounded-lg hover:bg-amber-300 transition-all">
+              <span className="font-medium">{t('nav.offer')}</span>
             </a>
           </div>
         )}

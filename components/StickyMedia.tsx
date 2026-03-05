@@ -18,10 +18,10 @@ interface StickyMediaProps {
 }
 
 const placeholderVariants = [
-  { icon: Flame, gradient: 'from-amber-500/30 via-zinc-900 to-black', pattern: '24px', label: 'Heat zone' },
-  { icon: Shield, gradient: 'from-emerald-500/20 via-zinc-900 to-black', pattern: '28px', label: 'Safety ready' },
-  { icon: Layers, gradient: 'from-sky-500/20 via-zinc-900 to-black', pattern: '20px', label: 'Layered build' },
-  { icon: Zap, gradient: 'from-fuchsia-500/20 via-zinc-900 to-black', pattern: '26px', label: 'Fast response' },
+  { icon: Flame, gradient: 'from-amber-500/30 via-zinc-900 to-black', pattern: '24px' },
+  { icon: Shield, gradient: 'from-emerald-500/20 via-zinc-900 to-black', pattern: '28px' },
+  { icon: Layers, gradient: 'from-sky-500/20 via-zinc-900 to-black', pattern: '20px' },
+  { icon: Zap, gradient: 'from-fuchsia-500/20 via-zinc-900 to-black', pattern: '26px' },
 ];
 
 export function StickyMedia({ items, activeIndex, className }: StickyMediaProps) {
@@ -39,7 +39,7 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
 
   return (
     <div className={`relative overflow-hidden rounded-3xl border border-white/20 bg-zinc-900/80 shadow-2xl shadow-black/60 ${className || ''}`}>
-      <div className="relative aspect-[4/5] md:aspect-[3/4]">
+      <div className="relative w-full h-[60vh] min-h-[320px] md:min-h-[420px]">
         <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-900 to-black" />
 
         {items.map((item, index) => {
@@ -51,7 +51,6 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
               key={item.src}
               className={`absolute inset-0 transition-all duration-700 ease-out ${isActive && !isFailed ? 'opacity-100 scale-100' : 'opacity-0 scale-[1.02]'}`}
             >
-              {/* TODO: Add file to /public/images/metal/ */}
               <Image
                 src={item.src}
                 alt={item.alt}
@@ -82,7 +81,7 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
               <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-black/10 to-transparent" />
               <div className="absolute top-6 left-6 inline-flex items-center gap-2 rounded-full border border-white/30 bg-black/85 px-3 py-2 text-xs uppercase tracking-[0.3em] text-white">
                 <Icon size={14} />
-                {variant.label}
+                {item.label}
               </div>
               <div className="absolute bottom-16 left-6 text-lg font-semibold text-white">{item.label}</div>
             </div>

@@ -52,7 +52,7 @@ export function LazyMedia({
   return (
     <div
       ref={ref}
-      className={`relative overflow-hidden rounded-3xl border border-white/10 bg-white/5 shadow-2xl shadow-black/40 ${
+      className={`relative overflow-hidden rounded-3xl border border-white/10 bg-white/10 shadow-2xl shadow-black/40 ${
         aspectClass[aspect]
       } ${className || ''}`}
     >

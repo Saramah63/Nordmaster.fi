@@ -16,7 +16,7 @@ export function Section({ id, eyebrow, title, description, className, children }
         {(eyebrow || title || description) && (
           <div className="max-w-3xl mb-12">
             {eyebrow && (
-              <div className="text-xs uppercase tracking-[0.4em] text-slate-400 mb-4">
+              <div className="text-xs uppercase tracking-[0.4em] text-zinc-400 mb-4">
                 {eyebrow}
               </div>
             )}
@@ -26,7 +26,7 @@ export function Section({ id, eyebrow, title, description, className, children }
               </h2>
             )}
             {description && (
-              <p className="mt-4 text-base md:text-lg text-slate-300">
+              <p className="mt-4 text-base md:text-lg text-zinc-300">
                 {description}
               </p>
             )}

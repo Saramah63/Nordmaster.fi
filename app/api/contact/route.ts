@@ -16,8 +16,12 @@ export async function POST(req: Request) {
       return Response.json({ ok: false, error: 'Invalid email' }, { status: 400 });
     }
 
+    if (message.length < 10) {
+      return Response.json({ ok: false, error: 'Message is too short' }, { status: 400 });
+    }
+
     if (!process.env.ZOHO_SMTP_USER || !process.env.ZOHO_SMTP_PASS || !process.env.CONTACT_TO) {
-      return Response.json({ ok: false, error: 'Server not configured' }, { status: 500 });
+      return Response.json({ ok: false, error: 'SERVER_NOT_CONFIGURED' }, { status: 500 });
     }
 
     const transporter = nodemailer.createTransport({
