@@ -59,62 +59,66 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
 
   return (
     <>
-      <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10">
+      <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-12">
         <div className="lg:sticky lg:top-28 h-max">
-          <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center justify-between mb-6">
             <div className="text-xs uppercase tracking-[0.3em] text-zinc-500">Progress</div>
-            <div className="text-sm text-zinc-200">
+            <div className="text-2xl font-semibold text-white">
               {String(activeIndex + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}
             </div>
           </div>
           <div className="relative">
             <StickyMedia items={mediaItems} activeIndex={activeIndex} />
-            <div className="hidden lg:block absolute -right-6 top-4 w-[2px] h-[80%] bg-white/10">
-              <div
-                className="absolute left-0 w-full bg-amber-400 transition-all duration-500"
-                style={{ height: `${((activeIndex + 1) / steps.length) * 100}%` }}
-              />
-            </div>
           </div>
         </div>
 
-        <div className="space-y-8">
-          {steps.map((step, index) => {
-            const isActive = index === activeIndex;
-            return (
-              <section
-                key={step.id}
-                id={step.id}
-                ref={(el) => {
-                  refs.current[index] = el;
-                }}
-                className={`rounded-3xl border transition-all duration-300 px-6 py-8 md:px-8 ${
-                  isActive
-                    ? 'border-amber-400/40 bg-white/5 shadow-xl shadow-black/40'
-                    : 'border-white/10 bg-transparent'
-                }`}
-              >
-                <div className={`flex items-center gap-3 text-xs uppercase tracking-[0.3em] ${isActive ? 'text-amber-200' : 'text-zinc-500'}`}>
-                  <span>{step.label}</span>
-                  <span className="h-[1px] flex-1 bg-white/10" />
-                </div>
-                <h3 className={`mt-4 text-2xl md:text-3xl font-semibold ${isActive ? 'text-white' : 'text-zinc-200'}`}>
-                  {step.title}
-                </h3>
-                <p className={`mt-3 ${isActive ? 'text-zinc-300' : 'text-zinc-400'}`}>{step.body}</p>
-                <ul className={`mt-5 grid gap-2 text-sm ${isActive ? 'text-zinc-300' : 'text-zinc-500'}`}>
-                  {step.bullets.map((bullet) => (
-                    <li key={bullet} className="flex items-start gap-2">
-                      <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400" />
-                      <span>{bullet}</span>
-                    </li>
-                  ))}
-                </ul>
-              </section>
-            );
-          })}
+        <div className="relative">
+          <div className="hidden lg:block absolute -left-6 top-0 h-full w-[2px] bg-white/10">
+            <div
+              className="absolute left-0 w-full bg-amber-400 transition-all duration-500"
+              style={{ height: `${((activeIndex + 1) / steps.length) * 100}%` }}
+            />
+          </div>
+
+          <div className="space-y-10">
+            {steps.map((step, index) => {
+              const isActive = index === activeIndex;
+              return (
+                <section
+                  key={step.id}
+                  id={step.id}
+                  ref={(el) => {
+                    refs.current[index] = el;
+                  }}
+                  className={`min-h-[60vh] lg:min-h-[80vh] rounded-3xl border transition-all duration-300 px-6 py-10 md:px-10 ${
+                    isActive
+                      ? 'border-amber-400/60 bg-white/5 shadow-2xl shadow-amber-500/10 text-white'
+                      : 'border-white/10 bg-transparent text-zinc-400 opacity-60'
+                  }`}
+                >
+                  <div className={`flex items-center gap-3 text-xs uppercase tracking-[0.3em] ${isActive ? 'text-amber-200' : 'text-zinc-500'}`}>
+                    <span>{step.label}</span>
+                    <span className="h-[1px] flex-1 bg-white/10" />
+                  </div>
+                  <h3 className={`mt-4 text-2xl md:text-3xl font-semibold ${isActive ? 'text-white' : 'text-zinc-200'}`}>
+                    {step.title}
+                  </h3>
+                  <p className={`mt-3 ${isActive ? 'text-zinc-300' : 'text-zinc-500'}`}>{step.body}</p>
+                  <ul className={`mt-6 grid gap-3 text-sm ${isActive ? 'text-zinc-300' : 'text-zinc-500'}`}>
+                    {step.bullets.map((bullet) => (
+                      <li key={bullet} className="flex items-start gap-2">
+                        <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400" />
+                        <span>{bullet}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </section>
+              );
+            })}
+          </div>
         </div>
       </div>
+
       {process.env.NODE_ENV !== 'production' && (
         <div className="fixed bottom-4 right-4 z-50 rounded-full border border-white/20 bg-black/80 px-4 py-2 text-xs text-white">
           Active step: {activeIndex + 1}
