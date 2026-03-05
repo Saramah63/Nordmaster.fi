@@ -58,6 +58,25 @@ export function StickyMedia({ items, activeIndex, className }: StickyMediaProps)
           );
         })}
 
+        {items.map((item, index) => {
+          if (!visibleIndices.has(index)) return null;
+          const isActive = index === activeIndex;
+          const isFailed = !!failed[index];
+          if (!isFailed) return null;
+          return (
+            <div
+              key={`${item.src}-placeholder`}
+              className={`absolute inset-0 transition-opacity duration-700 ease-out ${isActive ? 'opacity-100' : 'opacity-0'}`}
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-zinc-900 via-zinc-800 to-zinc-900" />
+              <div className="absolute inset-0 opacity-40" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.08) 1px, transparent 0)', backgroundSize: '28px 28px' }} />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
+              <div className="absolute top-8 left-8 text-xs uppercase tracking-[0.4em] text-zinc-300">Placeholder media</div>
+              <div className="absolute bottom-16 left-8 text-lg font-semibold text-white">{item.label}</div>
+            </div>
+          );
+        })}
+
         <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent" />
       </div>
 
