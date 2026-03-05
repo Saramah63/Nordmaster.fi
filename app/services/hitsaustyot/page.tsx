@@ -17,6 +17,7 @@ import {
   Mail,
 } from 'lucide-react';
 import { Section } from '@/components/Section';
+import { LazyMedia } from '@/components/LazyMedia';
 
 const OFFER_ITEMS = [
   {
@@ -253,6 +254,22 @@ export default function HitsaustyotPage() {
             </div>
           </div>
         </div>
+        <div className="mt-12 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
+          <div className="relative">
+            {/* TODO: Add file to /public/images/metal/welding-01.jpg */}
+            <LazyMedia src="/images/metal/welding-01.jpg" alt="On-site welding work" aspect="video" />
+            <div className="absolute left-6 bottom-6 inline-flex items-center gap-2 rounded-full bg-slate-950/80 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-200 border border-white/10">
+              On-site welding
+            </div>
+          </div>
+          <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
+            <div className="text-xs uppercase tracking-[0.4em] text-slate-400">Work approach</div>
+            <h3 className="mt-4 text-2xl font-semibold">Fast, controlled, and documented</h3>
+            <p className="mt-4 text-slate-300">
+              We handle permits, safety routines, and reporting while your team focuses on production. Our supervisors keep a tight loop with site management.
+            </p>
+          </div>
+        </div>
       </Section>
 
       <Section
@@ -262,6 +279,13 @@ export default function HitsaustyotPage() {
         description="Scale up quickly with vetted welders and project support tailored to your site." 
         className="bg-slate-950"
       >
+        <div className="relative mb-10">
+          {/* TODO: Add file to /public/images/metal/welding-02.jpg */}
+          <LazyMedia src="/images/metal/welding-02.jpg" alt="Metal fabrication detail" aspect="banner" />
+          <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full bg-slate-950/80 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-200 border border-white/10">
+            Metal fabrication
+          </div>
+        </div>
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {OFFER_ITEMS.map((item) => (
             <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-amber-400/40 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-black/40">
@@ -348,6 +372,13 @@ export default function HitsaustyotPage() {
                 Call Aigars
                 <Phone size={16} />
               </a>
+            </div>
+          </div>
+          <div className="mt-8 relative">
+            {/* TODO: Add file to /public/images/metal/welding-03.jpg */}
+            <LazyMedia src="/images/metal/welding-03.jpg" alt="Industrial welding site" aspect="banner" />
+            <div className="absolute right-6 bottom-6 inline-flex items-center gap-2 rounded-full bg-slate-950/80 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-200 border border-white/10">
+              Industrial support
             </div>
           </div>
         </div>
