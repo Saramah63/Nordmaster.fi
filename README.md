@@ -28,5 +28,8 @@ Production-ready React + Vite website for Nordmaster Group Oy.
 - Open Graph and Twitter social metadata
 - `robots.txt` and `sitemap.xml`
 - Web app manifest
-- GitHub Actions CI (`.github/workflows/ci.yml`) for typecheck/build
 - Consistent repository text settings (`.editorconfig`, `.gitattributes`)
+
+## Dependencies
+
+- `npm i lucide-react nodemailer`
