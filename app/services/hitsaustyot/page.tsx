@@ -3,65 +3,81 @@
 import { useState } from 'react';
 import {
   ArrowRight,
-  BadgeCheck,
-  Building2,
-  CheckCircle2,
-  ChevronRight,
-  Clock,
-  HardHat,
+  Mail,
   MapPin,
   Phone,
   ShieldCheck,
-  Sparkles,
   Users,
-  Mail,
 } from 'lucide-react';
-import { Section } from '@/components/Section';
-import { LazyMedia } from '@/components/LazyMedia';
+import { ScrollSteps } from '@/components/ScrollSteps';
 
-const OFFER_ITEMS = [
+const STEPS = [
   {
-    title: 'On-site welding teams',
-    description: 'Certified welders and supervisors ready for industrial sites and tight schedules.',
+    id: 'step-1',
+    label: 'Certified Workforce',
+    title: 'Certified welding crews ready for industrial sites',
+    body: 'We provide vetted welders and supervisors for steel structures, fabrication, and repairs. Built for demanding environments and clear safety routines.',
+    bullets: [
+      'Certified welders and experienced site supervisors',
+      'Suitable for steel structures, stairs, and platforms',
+      'Supports shutdowns, repairs, and new builds',
+    ],
+    image: '/images/metal/welding-01.jpg',
+    alt: 'Certified welding crew at industrial site',
+    caption: 'Certified welding teams',
   },
   {
-    title: 'Flexible duration',
-    description: 'Short-term shutdowns or long-term workforce rental based on project needs.',
+    id: 'step-2',
+    label: 'On-site Readiness',
+    title: 'On-site readiness with rapid mobilization',
+    body: 'We ramp up fast with clear scope definition, transparent pricing, and a dedicated lead who coordinates with your project team.',
+    bullets: [
+      'Fast start with defined scope and timeline',
+      'On-site integration with your supervisors',
+      'Flexible crew sizing based on workload',
+    ],
+    image: '/images/metal/welding-02.jpg',
+    alt: 'On-site welding preparation',
+    caption: 'On-site readiness',
   },
   {
-    title: 'Compliance & documentation',
-    description: 'Safety-first methods, work permits, and reporting aligned with Finnish regulations.',
+    id: 'step-3',
+    label: 'Safety-first',
+    title: 'Safety-first execution and compliance',
+    body: 'Every job is delivered with work permits, safety plans, and documentation aligned with Finnish industrial requirements.',
+    bullets: [
+      'Safety plans and work permits included',
+      'Clear documentation and compliance',
+      'Quality checks throughout execution',
+    ],
+    image: '/images/metal/welding-03.jpg',
+    alt: 'Safety-first welding environment',
+    caption: 'Safety-first execution',
   },
   {
-    title: 'Fast start',
-    description: 'Rapid mobilization with clear scope definition and transparent pricing.',
+    id: 'step-4',
+    label: 'Reporting & Flexibility',
+    title: 'Clear reporting and flexible duration',
+    body: 'We keep you updated with regular reporting and adapt quickly to changing timelines or production needs.',
+    bullets: [
+      'Daily or weekly reporting on progress',
+      'Flexible duration for long or short projects',
+      'Support for urgent maintenance and repairs',
+    ],
+    image: '/images/metal/welding-04.jpg',
+    alt: 'Reporting and coordination on site',
+    caption: 'Clear reporting',
   },
-  {
-    title: 'Coordination support',
-    description: 'We integrate with your site managers and project leads from day one.',
-  },
-  {
-    title: 'Quality control',
-    description: 'Visual inspections and continuous quality follow-up during execution.',
-  },
-];
-
-const SERVICE_BULLETS = [
-  'MIG, MAG, and TIG welding for structural steel and fabrication',
-  'Workshop and on-site welding for industrial facilities',
-  'Steel structures, stairs, railings, platforms, and custom assemblies',
-  'Work permits, safety plans, and documentation included',
-  'Scheduled maintenance, repairs, and shutdown support',
 ];
 
 const COVERAGE = [
   {
     region: 'Southwest Finland',
-    cities: ['Turku', 'Raisio', 'Naantali', 'Kaarina', 'Lieto', 'Salo'],
+    cities: ['Turku', 'Raisio', 'Naantali', 'Kaarina', 'Salo'],
   },
   {
     region: 'Satakunta',
-    cities: ['Pori', 'Rauma', 'Ulvila', 'Nakkila', 'Harjavalta'],
+    cities: ['Pori', 'Rauma', 'Ulvila', 'Harjavalta'],
   },
   {
     region: 'Other regions on request',
@@ -121,28 +137,28 @@ export default function HitsaustyotPage() {
   }
 
   return (
-    <div className="min-h-screen bg-slate-950 text-white">
-      <header className="sticky top-0 z-40 bg-slate-950/70 backdrop-blur border-b border-white/10">
+    <div className="min-h-screen bg-zinc-950 text-white">
+      <header className="sticky top-0 z-40 bg-zinc-950/80 backdrop-blur border-b border-white/10">
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between py-4">
-            <div className="flex items-center gap-3">
-              <div className="h-11 w-11 rounded-xl bg-white/10 border border-white/10 flex items-center justify-center">
-                <span className="font-semibold">N</span>
-              </div>
-              <div>
-                <div className="text-sm uppercase tracking-[0.4em] text-slate-400">Nordmaster Group</div>
-                <div className="text-lg font-semibold">Hitsaustyot</div>
-              </div>
+            <div>
+              <div className="text-xs uppercase tracking-[0.4em] text-zinc-500">Nordmaster Group</div>
+              <div className="text-lg font-semibold">Welding Services</div>
             </div>
-            <nav className="hidden lg:flex items-center gap-8 text-sm text-slate-300">
+            <nav className="hidden lg:flex items-center gap-8 text-sm text-zinc-300">
               <a className="hover:text-white" href="#home">Home</a>
-              <a className="hover:text-white" href="#services">Services</a>
-              <a className="hover:text-white" href="#projects">Projects</a>
+              <a className="hover:text-white" href="#scrolly">Services</a>
+              <a className="hover:text-white" href="#coverage">Coverage</a>
               <a className="hover:text-white" href="#contact">Contact</a>
             </nav>
+            <div className="hidden md:flex items-center gap-3 text-xs text-zinc-400">
+              <a href="tel:+358406887988" className="hover:text-white">+358 40 688 7988</a>
+              <span>•</span>
+              <a href="tel:+358406206846" className="hover:text-white">+358 40 620 6846</a>
+            </div>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-amber-400 text-slate-950 px-4 py-2 text-sm font-semibold shadow-lg shadow-amber-500/30 hover:bg-amber-300"
+              className="inline-flex items-center gap-2 rounded-full bg-amber-400 text-zinc-950 px-4 py-2 text-sm font-semibold shadow-lg shadow-amber-500/30"
             >
               Request an offer
               <ArrowRight size={16} />
@@ -151,54 +167,38 @@ export default function HitsaustyotPage() {
         </div>
       </header>
 
-      <section id="home" className="relative overflow-hidden">
+      <section id="home" className="relative overflow-hidden py-20 lg:py-28">
         <div className="absolute inset-0">
-          <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl" />
-          <div className="absolute top-24 right-0 h-[420px] w-[420px] rounded-full bg-slate-700/40 blur-3xl" />
-          <div className="absolute bottom-0 left-0 right-0 h-[260px] bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
-          <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)', backgroundSize: '26px 26px' }} />
+          <div className="absolute -top-40 -left-32 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl" />
+          <div className="absolute top-12 right-0 h-[420px] w-[420px] rounded-full bg-zinc-700/40 blur-3xl" />
         </div>
-
-        <div className="container mx-auto px-4 relative z-10 py-20 lg:py-28">
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.4em] text-slate-200">
-              <Sparkles size={14} />
-              Welding Services
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.4em] text-zinc-300">
+              Premium welding support
             </div>
-            <h1 className="mt-6 text-4xl md:text-6xl font-semibold leading-tight">
-              Industrial Welding Workforce for Demanding Projects
-            </h1>
-            <p className="mt-5 text-lg text-slate-300">
-              Nordmaster Group delivers certified welding teams for steel structures, repairs, and on-site fabrication. Fast mobilization, safety-first execution, and clear reporting for Finnish industry.
+            <h1 className="mt-6 text-4xl md:text-6xl font-semibold">Certified welding workforce for industrial projects</h1>
+            <p className="mt-5 text-lg text-zinc-300">
+              Nordmaster Group provides on-site welding teams for steel structures, repairs, and fabrication. Safety-first execution, clear reporting, and flexible duration for Finnish industry.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <a
-                href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-400 text-slate-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-amber-500/30"
-              >
+              <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-amber-400 text-zinc-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-amber-500/30">
                 Request offer
                 <ArrowRight size={16} />
               </a>
-              <a
-                href="tel:+358406887988"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold"
-              >
+              <a href="tel:+358406887988" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold">
                 Call now
                 <Phone size={16} />
               </a>
             </div>
-
-            <div className="mt-10 flex flex-wrap gap-4 text-xs text-slate-300">
+            <div className="mt-10 flex flex-wrap gap-4 text-xs text-zinc-300">
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
-                <Clock size={14} />
                 Fast response
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-2">
-                <ShieldCheck size={14} />
+              <span className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-2">
                 Safety-first
               </span>
               <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
-                <HardHat size={14} />
                 On-site ready
               </span>
             </div>
@@ -206,281 +206,172 @@ export default function HitsaustyotPage() {
         </div>
       </section>
 
-      <Section
-        id="services"
-        eyebrow="Service overview"
-        title="Professional welding services for industrial sites"
-        description="We support factories, shipyards, and construction sites with qualified welding crews, clear documentation, and flexible delivery."
-        className="bg-slate-950"
-      >
-        <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12">
-          <div className="space-y-6 text-slate-300">
-            <p>
-              Our welding specialists operate with strict safety procedures, reliable scheduling, and on-site coordination. We handle both planned projects and urgent repairs with the same focus on quality.
-            </p>
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold text-white mb-4">What the service includes</h3>
-              <ul className="space-y-3">
-                {SERVICE_BULLETS.map((item) => (
-                  <li key={item} className="flex items-start gap-3">
-                    <CheckCircle2 className="mt-0.5 text-emerald-300" size={18} />
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </div>
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-br from-white/10 via-white/5 to-transparent p-8">
-            <div className="flex items-start justify-between">
-              <div>
-                <div className="text-xs uppercase tracking-[0.4em] text-slate-400">Service scope</div>
-                <h3 className="mt-3 text-2xl font-semibold">Project-ready teams</h3>
-              </div>
-              <BadgeCheck className="text-emerald-300" />
-            </div>
-            <div className="mt-6 space-y-4 text-sm text-slate-300">
-              <div className="flex items-center gap-3">
-                <Building2 size={18} />
-                On-site welding for steel structures and assemblies
-              </div>
-              <div className="flex items-center gap-3">
-                <Users size={18} />
-                Dedicated supervisors and reporting with your site managers
-              </div>
-              <div className="flex items-center gap-3">
-                <ShieldCheck size={18} />
-                Safety documentation, permits, and compliance support
-              </div>
-            </div>
-          </div>
-        </div>
-        <div className="mt-12 grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
-          <div className="relative">
-            {/* TODO: Add file to /public/images/metal/welding-01.jpg */}
-            <LazyMedia src="/images/metal/welding-01.jpg" alt="On-site welding work" aspect="video" />
-            <div className="absolute left-6 bottom-6 inline-flex items-center gap-2 rounded-full bg-slate-950/80 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-200 border border-white/10">
-              On-site welding
-            </div>
-          </div>
-          <div className="rounded-3xl border border-white/10 bg-white/5 p-8">
-            <div className="text-xs uppercase tracking-[0.4em] text-slate-400">Work approach</div>
-            <h3 className="mt-4 text-2xl font-semibold">Fast, controlled, and documented</h3>
-            <p className="mt-4 text-slate-300">
-              We handle permits, safety routines, and reporting while your team focuses on production. Our supervisors keep a tight loop with site management.
-            </p>
-          </div>
-        </div>
-      </Section>
-
-      <Section
-        id="offers"
-        eyebrow="We offer"
-        title="Flexible workforce services"
-        description="Scale up quickly with vetted welders and project support tailored to your site." 
-        className="bg-slate-950"
-      >
-        <div className="relative mb-10">
-          {/* TODO: Add file to /public/images/metal/welding-02.jpg */}
-          <LazyMedia src="/images/metal/welding-02.jpg" alt="Metal fabrication detail" aspect="banner" />
-          <div className="absolute left-6 top-6 inline-flex items-center gap-2 rounded-full bg-slate-950/80 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-200 border border-white/10">
-            Metal fabrication
-          </div>
-        </div>
-        <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
-          {OFFER_ITEMS.map((item) => (
-            <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-amber-400/40 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-black/40">
-              <div className="flex items-start justify-between">
-                <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-                <ChevronRight className="text-slate-500" size={18} />
-              </div>
-              <p className="mt-3 text-sm text-slate-300">{item.description}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section
-        id="projects"
-        eyebrow="Projects"
-        title="Representative welding work"
-        description="Industrial welding crews ready for shutdowns, repairs, and new installations." 
-        className="bg-slate-950"
-      >
-        <div className="grid md:grid-cols-3 gap-6">
-          {[
-            {
-              title: 'Production hall repairs',
-              copy: 'Rapid response welding and structural reinforcement during planned shutdown.',
-            },
-            {
-              title: 'Steel structure installation',
-              copy: 'On-site welding with full safety documentation and compliance follow-up.',
-            },
-            {
-              title: 'Custom fabrication support',
-              copy: 'Coordination with workshops and site supervisors to deliver on schedule.',
-            },
-          ].map((item) => (
-            <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              <h3 className="text-lg font-semibold text-white">{item.title}</h3>
-              <p className="mt-3 text-sm text-slate-300">{item.copy}</p>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <Section
-        id="coverage"
-        eyebrow="Coverage areas"
-        title="Operating across Southwest Finland & Satakunta"
-        description="We mobilize teams quickly in key industrial regions. Other areas on request."
-        className="bg-slate-950"
-      >
-        <div className="grid md:grid-cols-3 gap-6">
-          {COVERAGE.map((area) => (
-            <div key={area.region} className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 via-white/5 to-amber-500/10 p-6">
-              <div className="flex items-center gap-2 text-white font-semibold">
-                <MapPin size={16} />
-                {area.region}
-              </div>
-              <div className="mt-4 flex flex-wrap gap-2">
-                {area.cities.map((city) => (
-                  <span key={city} className="rounded-full border border-white/10 px-3 py-1 text-xs text-slate-300">
-                    {city}
-                  </span>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </Section>
-
-      <section className="py-16 bg-slate-900 text-white">
+      <section id="scrolly" className="py-20 lg:py-24">
         <div className="container mx-auto px-4">
-          <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-amber-500/10 via-slate-900 to-slate-950 p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
-            <div>
-              <div className="text-xs uppercase tracking-[0.4em] text-amber-200">Need service support?</div>
-              <h3 className="mt-3 text-3xl font-semibold">Get a welding team on site fast</h3>
-              <p className="mt-3 text-slate-300">Reach out now. We respond quickly with availability and a clear plan.</p>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-amber-400 text-slate-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-amber-500/30">
-                Request an offer
-                <ArrowRight size={16} />
-              </a>
-              <a href="tel:+358406887988" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold">
-                Call Aigars
-                <Phone size={16} />
-              </a>
-            </div>
+          <div className="mb-12">
+            <div className="text-xs uppercase tracking-[0.4em] text-zinc-400">Service flow</div>
+            <h2 className="mt-4 text-3xl md:text-5xl font-semibold">Scrollytelling service delivery</h2>
+            <p className="mt-4 text-zinc-300 max-w-3xl">
+              Scroll to see how our welding service adapts to each phase: workforce, readiness, safety, and reporting. The media panel updates with each step.
+            </p>
           </div>
-          <div className="mt-8 relative">
-            {/* TODO: Add file to /public/images/metal/welding-03.jpg */}
-            <LazyMedia src="/images/metal/welding-03.jpg" alt="Industrial welding site" aspect="banner" />
-            <div className="absolute right-6 bottom-6 inline-flex items-center gap-2 rounded-full bg-slate-950/80 px-4 py-2 text-xs uppercase tracking-[0.3em] text-slate-200 border border-white/10">
-              Industrial support
+          <ScrollSteps steps={STEPS} />
+        </div>
+      </section>
+
+      <section id="coverage" className="py-20 bg-zinc-900/40">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+            <div>
+              <div className="text-xs uppercase tracking-[0.4em] text-zinc-400">Coverage</div>
+              <h3 className="mt-4 text-3xl font-semibold">Southwest Finland & Satakunta</h3>
+              <p className="mt-4 text-zinc-300">
+                We mobilize quickly across key industrial regions and expand coverage on request.
+              </p>
+            </div>
+            <div className="grid gap-4">
+              {COVERAGE.map((area) => (
+                <div key={area.region} className="rounded-2xl border border-white/10 bg-white/5 p-5">
+                  <div className="flex items-center gap-2 text-white font-semibold">
+                    <MapPin size={16} />
+                    {area.region}
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {area.cities.map((city) => (
+                      <span key={city} className="rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-300">
+                        {city}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </section>
 
-      <Section
-        id="contact"
-        eyebrow="Contact"
-        title="Talk to our welding coordinators"
-        description="We answer fast and keep communication clear during the entire project."
-        className="bg-slate-950"
-      >
-        <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10">
-          <div className="space-y-6">
-            {CONTACTS.map((contact) => (
-              <div key={contact.name} className="rounded-2xl border border-white/10 bg-white/5 p-6">
-                <div className="text-sm text-slate-400">Contact person</div>
-                <div className="mt-2 text-xl font-semibold text-white">{contact.name}</div>
-                <div className="mt-2 text-slate-300">{contact.phone}</div>
-                <a
-                  href={contact.tel}
-                  className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm font-semibold"
-                >
-                  Call now
-                  <Phone size={14} />
-                </a>
-              </div>
-            ))}
-
-            <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
-              <div className="text-sm text-slate-400">Email</div>
-              <div className="mt-2 text-lg font-semibold text-white">support@nordmastergroup.com</div>
-              <a
-                href="mailto:support@nordmastergroup.com"
-                className="mt-3 inline-flex items-center gap-2 text-sm text-slate-300"
-              >
-                <Mail size={14} />
-                Send email
+      <section className="py-16 bg-amber-400 text-zinc-950">
+        <div className="container mx-auto px-4">
+          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+            <div>
+              <div className="text-xs uppercase tracking-[0.4em] text-zinc-700">Need service support?</div>
+              <h3 className="mt-3 text-3xl font-semibold">Get a welding team on site fast</h3>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-zinc-950 text-white px-6 py-3 text-sm font-semibold">
+                Request an offer
+                <ArrowRight size={16} />
+              </a>
+              <a href="tel:+358406887988" className="inline-flex items-center gap-2 rounded-full border border-zinc-800 px-6 py-3 text-sm font-semibold">
+                Call Aigars
+                <Phone size={16} />
               </a>
             </div>
           </div>
-
-          <form onSubmit={handleSubmit} className="rounded-3xl border border-amber-500/20 bg-white/5 p-8 shadow-2xl shadow-black/50">
-            <div className="grid md:grid-cols-2 gap-4">
-              <div>
-                <label className="text-xs uppercase tracking-[0.3em] text-slate-400">Name</label>
-                <input
-                  name="name"
-                  required
-                  className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-sm text-white"
-                  placeholder="Your name"
-                />
-              </div>
-              <div>
-                <label className="text-xs uppercase tracking-[0.3em] text-slate-400">Email</label>
-                <input
-                  name="email"
-                  type="email"
-                  required
-                  className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-sm text-white"
-                  placeholder="name@company.com"
-                />
-              </div>
-            </div>
-            <div className="mt-4">
-              <label className="text-xs uppercase tracking-[0.3em] text-slate-400">Phone (optional)</label>
-              <input
-                name="phone"
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-sm text-white"
-                placeholder="+358"
-              />
-            </div>
-            <div className="mt-4">
-              <label className="text-xs uppercase tracking-[0.3em] text-slate-400">Message</label>
-              <textarea
-                name="message"
-                required
-                rows={5}
-                className="mt-2 w-full rounded-2xl border border-white/10 bg-slate-950/60 px-4 py-3 text-sm text-white"
-                placeholder="Tell us about your welding needs"
-              />
-            </div>
-            <button
-              type="submit"
-              disabled={status === 'sending'}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-amber-400 text-slate-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-amber-500/30"
-            >
-              {status === 'sending' ? 'Sending...' : 'Request an offer'}
-              <ArrowRight size={16} />
-            </button>
-            {status === 'sent' && (
-              <div className="mt-4 text-sm text-emerald-300">Thank you. We will contact you shortly.</div>
-            )}
-            {status === 'error' && (
-              <div className="mt-4 text-sm text-rose-300">{errorMessage || 'Something went wrong.'}</div>
-            )}
-          </form>
         </div>
-      </Section>
+      </section>
 
-      <footer className="border-t border-white/10 bg-slate-950">
-        <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+      <section id="contact" className="py-20">
+        <div className="container mx-auto px-4">
+          <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10">
+            <div className="space-y-6">
+              <div>
+                <div className="text-xs uppercase tracking-[0.4em] text-zinc-400">Contact</div>
+                <h3 className="mt-4 text-3xl font-semibold">Talk to our coordinators</h3>
+                <p className="mt-4 text-zinc-300">
+                  Reach out directly for availability, pricing, and start times.
+                </p>
+              </div>
+
+              {CONTACTS.map((contact) => (
+                <div key={contact.name} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                  <div className="text-sm text-zinc-400">Contact person</div>
+                  <div className="mt-2 text-xl font-semibold text-white">{contact.name}</div>
+                  <div className="mt-2 text-zinc-300">{contact.phone}</div>
+                  <a
+                    href={contact.tel}
+                    className="mt-4 inline-flex items-center gap-2 rounded-full border border-white/20 px-4 py-2 text-sm font-semibold"
+                  >
+                    Call now
+                    <Phone size={14} />
+                  </a>
+                </div>
+              ))}
+
+              <div className="rounded-2xl border border-white/10 bg-white/5 p-6">
+                <div className="text-sm text-zinc-400">Email</div>
+                <div className="mt-2 text-lg font-semibold text-white">support@nordmastergroup.com</div>
+                <a
+                  href="mailto:support@nordmastergroup.com"
+                  className="mt-3 inline-flex items-center gap-2 text-sm text-zinc-300"
+                >
+                  <Mail size={14} />
+                  Send email
+                </a>
+              </div>
+            </div>
+
+            <form onSubmit={handleSubmit} className="rounded-3xl border border-white/10 bg-white/5 p-8">
+              <div className="grid md:grid-cols-2 gap-4">
+                <div>
+                  <label className="text-xs uppercase tracking-[0.3em] text-zinc-400">Name</label>
+                  <input
+                    name="name"
+                    required
+                    className="mt-2 w-full rounded-2xl border border-white/10 bg-zinc-950/60 px-4 py-3 text-sm text-white"
+                    placeholder="Your name"
+                  />
+                </div>
+                <div>
+                  <label className="text-xs uppercase tracking-[0.3em] text-zinc-400">Email</label>
+                  <input
+                    name="email"
+                    type="email"
+                    required
+                    className="mt-2 w-full rounded-2xl border border-white/10 bg-zinc-950/60 px-4 py-3 text-sm text-white"
+                    placeholder="name@company.com"
+                  />
+                </div>
+              </div>
+              <div className="mt-4">
+                <label className="text-xs uppercase tracking-[0.3em] text-zinc-400">Phone (optional)</label>
+                <input
+                  name="phone"
+                  className="mt-2 w-full rounded-2xl border border-white/10 bg-zinc-950/60 px-4 py-3 text-sm text-white"
+                  placeholder="+358"
+                />
+              </div>
+              <div className="mt-4">
+                <label className="text-xs uppercase tracking-[0.3em] text-zinc-400">Message</label>
+                <textarea
+                  name="message"
+                  required
+                  rows={5}
+                  className="mt-2 w-full rounded-2xl border border-white/10 bg-zinc-950/60 px-4 py-3 text-sm text-white"
+                  placeholder="Tell us about your welding needs"
+                />
+              </div>
+              <button
+                type="submit"
+                disabled={status === 'sending'}
+                className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-amber-400 text-zinc-950 px-6 py-3 text-sm font-semibold"
+              >
+                {status === 'sending' ? 'Sending...' : 'Request an offer'}
+                <ArrowRight size={16} />
+              </button>
+              {status === 'sent' && (
+                <div className="mt-4 text-sm text-emerald-300">Thank you. We will contact you shortly.</div>
+              )}
+              {status === 'error' && (
+                <div className="mt-4 text-sm text-rose-300">{errorMessage || 'Something went wrong.'}</div>
+              )}
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-white/10">
+        <div className="container mx-auto px-4 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-zinc-500">
           <div>© 2026 Nordmaster Group. All rights reserved.</div>
           <div className="flex gap-4">
             <a className="hover:text-white" href="#">Privacy</a>
