@@ -12,6 +12,7 @@ interface StepItem {
   image: string;
   alt: string;
   caption: string;
+  overlayLabel: string;
 }
 
 interface ScrollStepsProps {
@@ -51,15 +52,16 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
         src: step.image,
         alt: step.alt,
         caption: step.caption,
+        label: step.overlayLabel,
       })),
     [steps]
   );
 
   return (
-    <div className="grid lg:grid-cols-[0.9fr_1.1fr] gap-10">
+    <div className="grid lg:grid-cols-[0.95fr_1.05fr] gap-10">
       <div className="lg:sticky lg:top-28 h-max">
         <div className="flex items-center justify-between mb-4">
-          <div className="text-xs uppercase tracking-[0.3em] text-zinc-400">Progress</div>
+          <div className="text-xs uppercase tracking-[0.3em] text-zinc-500">Progress</div>
           <div className="text-sm text-zinc-200">
             {String(activeIndex + 1).padStart(2, '0')} / {String(steps.length).padStart(2, '0')}
           </div>
@@ -91,15 +93,15 @@ export function ScrollSteps({ steps }: ScrollStepsProps) {
                   : 'border-white/10 bg-transparent'
               }`}
             >
-              <div className="flex items-center gap-3 text-xs uppercase tracking-[0.3em] text-zinc-400">
+              <div className={`flex items-center gap-3 text-xs uppercase tracking-[0.3em] ${isActive ? 'text-amber-200' : 'text-zinc-500'}`}>
                 <span>{step.label}</span>
                 <span className="h-[1px] flex-1 bg-white/10" />
               </div>
-              <h3 className="mt-4 text-2xl md:text-3xl font-semibold text-white">
+              <h3 className={`mt-4 text-2xl md:text-3xl font-semibold ${isActive ? 'text-white' : 'text-zinc-200'}`}>
                 {step.title}
               </h3>
-              <p className="mt-3 text-zinc-300">{step.body}</p>
-              <ul className="mt-5 grid gap-2 text-sm text-zinc-300">
+              <p className={`mt-3 ${isActive ? 'text-zinc-300' : 'text-zinc-400'}`}>{step.body}</p>
+              <ul className={`mt-5 grid gap-2 text-sm ${isActive ? 'text-zinc-300' : 'text-zinc-500'}`}>
                 {step.bullets.map((bullet) => (
                   <li key={bullet} className="flex items-start gap-2">
                     <span className="mt-2 h-1.5 w-1.5 rounded-full bg-amber-400" />

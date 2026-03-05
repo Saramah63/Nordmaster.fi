@@ -1,87 +1,69 @@
 'use client';
 
 import { useState } from 'react';
-import {
-  ArrowRight,
-  Mail,
-  MapPin,
-  Phone,
-  ShieldCheck,
-  Users,
-} from 'lucide-react';
+import { ArrowRight, Mail, Phone } from 'lucide-react';
 import { ScrollSteps } from '@/components/ScrollSteps';
 
 const STEPS = [
   {
     id: 'step-1',
-    label: 'Certified Workforce',
-    title: 'Certified welding crews ready for industrial sites',
-    body: 'We provide vetted welders and supervisors for steel structures, fabrication, and repairs. Built for demanding environments and clear safety routines.',
+    label: 'ON-SITE READY',
+    title: 'Certified welding teams for demanding projects',
+    body: 'Nordmaster Group provides reliable welding workforce for steel structures, repairs, and on-site fabrication—built for industrial schedules and clear delivery.',
     bullets: [
-      'Certified welders and experienced site supervisors',
-      'Suitable for steel structures, stairs, and platforms',
-      'Supports shutdowns, repairs, and new builds',
+      'MIG / MAG / TIG welding for structural steel',
+      'Repairs, installations, and fabrication support',
+      'Site-ready onboarding and fast start',
     ],
     image: '/images/metal/welding-01.jpg',
-    alt: 'Certified welding crew at industrial site',
-    caption: 'Certified welding teams',
+    alt: 'Welding workforce on site',
+    overlayLabel: 'Welding workforce',
+    caption: 'Teams that integrate fast into your site workflow.',
   },
   {
     id: 'step-2',
-    label: 'On-site Readiness',
-    title: 'On-site readiness with rapid mobilization',
-    body: 'We ramp up fast with clear scope definition, transparent pricing, and a dedicated lead who coordinates with your project team.',
+    label: 'SAFETY & COMPLIANCE',
+    title: 'Safety-first execution and clean documentation',
+    body: 'We operate with strict safety practices and transparent reporting so your site stays compliant and predictable.',
     bullets: [
-      'Fast start with defined scope and timeline',
-      'On-site integration with your supervisors',
-      'Flexible crew sizing based on workload',
+      'PPE-ready and aligned with site requirements',
+      'Work permits and safety procedures followed',
+      'Clear progress updates for supervisors',
     ],
     image: '/images/metal/welding-02.jpg',
-    alt: 'On-site welding preparation',
-    caption: 'On-site readiness',
+    alt: 'Safety-first welding operation',
+    overlayLabel: 'Safety-first',
+    caption: 'Compliance-driven work, zero surprises.',
   },
   {
     id: 'step-3',
-    label: 'Safety-first',
-    title: 'Safety-first execution and compliance',
-    body: 'Every job is delivered with work permits, safety plans, and documentation aligned with Finnish industrial requirements.',
+    label: 'FLEXIBLE DELIVERY',
+    title: 'Short-term support or long-term staffing',
+    body: 'Scale workforce up or down based on workload—without slowing down delivery.',
     bullets: [
-      'Safety plans and work permits included',
-      'Clear documentation and compliance',
-      'Quality checks throughout execution',
+      'Workforce rental for peaks and deadlines',
+      'Long-term staffing for stable throughput',
+      'Transparent scope and scheduling',
     ],
     image: '/images/metal/welding-03.jpg',
-    alt: 'Safety-first welding environment',
-    caption: 'Safety-first execution',
+    alt: 'Flexible welding staffing',
+    overlayLabel: 'Flexible staffing',
+    caption: 'Right people, right time, right duration.',
   },
   {
     id: 'step-4',
-    label: 'Reporting & Flexibility',
-    title: 'Clear reporting and flexible duration',
-    body: 'We keep you updated with regular reporting and adapt quickly to changing timelines or production needs.',
+    label: 'FAST RESPONSE',
+    title: 'Request → offer → start on-site',
+    body: 'Send your request and we confirm availability, pricing, and next steps quickly.',
     bullets: [
-      'Daily or weekly reporting on progress',
-      'Flexible duration for long or short projects',
-      'Support for urgent maintenance and repairs',
+      'Quick availability check',
+      'Clear offer and start date',
+      'Direct contacts—no friction',
     ],
     image: '/images/metal/welding-04.jpg',
-    alt: 'Reporting and coordination on site',
-    caption: 'Clear reporting',
-  },
-];
-
-const COVERAGE = [
-  {
-    region: 'Southwest Finland',
-    cities: ['Turku', 'Raisio', 'Naantali', 'Kaarina', 'Salo'],
-  },
-  {
-    region: 'Satakunta',
-    cities: ['Pori', 'Rauma', 'Ulvila', 'Harjavalta'],
-  },
-  {
-    region: 'Other regions on request',
-    cities: ['Uusimaa', 'Pirkanmaa', 'Kanta-Hame', 'Ostrobothnia'],
+    alt: 'Fast response for welding projects',
+    overlayLabel: 'Get an offer',
+    caption: 'Move from request to action—fast.',
   },
 ];
 
@@ -138,26 +120,25 @@ export default function HitsaustyotPage() {
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
-      <header className="sticky top-0 z-40 bg-zinc-950/80 backdrop-blur border-b border-white/10">
+      <header className="sticky top-0 z-40 bg-zinc-950/85 backdrop-blur border-b border-white/10">
         <div className="container mx-auto px-4">
-          <div className="flex items-center justify-between py-4">
+          <div className="flex flex-wrap items-center justify-between gap-4 py-4">
             <div>
               <div className="text-xs uppercase tracking-[0.4em] text-zinc-500">Nordmaster Group</div>
-              <div className="text-lg font-semibold">Welding Services</div>
+              <div className="text-lg font-semibold">Welding Workforce</div>
             </div>
             <nav className="hidden lg:flex items-center gap-8 text-sm text-zinc-300">
               <a className="hover:text-white" href="#home">Home</a>
               <a className="hover:text-white" href="#scrolly">Services</a>
-              <a className="hover:text-white" href="#coverage">Coverage</a>
-              <a className="hover:text-white" href="#contact">Contact</a>
+              <a className="hover:text-white" href="#cta">Contact</a>
             </nav>
-            <div className="hidden md:flex items-center gap-3 text-xs text-zinc-400">
+            <div className="flex flex-wrap items-center gap-4 text-xs text-zinc-400">
               <a href="tel:+358406887988" className="hover:text-white">+358 40 688 7988</a>
-              <span>•</span>
               <a href="tel:+358406206846" className="hover:text-white">+358 40 620 6846</a>
+              <a href="mailto:support@nordmastergroup.com" className="hover:text-white">support@nordmastergroup.com</a>
             </div>
             <a
-              href="#contact"
+              href="#cta"
               className="inline-flex items-center gap-2 rounded-full bg-amber-400 text-zinc-950 px-4 py-2 text-sm font-semibold shadow-lg shadow-amber-500/30"
             >
               Request an offer
@@ -174,33 +155,22 @@ export default function HitsaustyotPage() {
         </div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-3xl">
-            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/10 px-4 py-2 text-xs uppercase tracking-[0.4em] text-zinc-300">
-              Premium welding support
+            <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.4em] text-zinc-300">
+              Welding support
             </div>
-            <h1 className="mt-6 text-4xl md:text-6xl font-semibold">Certified welding workforce for industrial projects</h1>
+            <h1 className="mt-6 text-4xl md:text-6xl font-semibold">Premium on-site welding workforce</h1>
             <p className="mt-5 text-lg text-zinc-300">
-              Nordmaster Group provides on-site welding teams for steel structures, repairs, and fabrication. Safety-first execution, clear reporting, and flexible duration for Finnish industry.
+              Industrial welding support with certified teams, safety-first execution, and clear reporting. Nordmaster Group keeps your site compliant and productive.
             </p>
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-amber-400 text-zinc-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-amber-500/30">
+              <a href="#cta" className="inline-flex items-center gap-2 rounded-full bg-amber-400 text-zinc-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-amber-500/30">
                 Request offer
                 <ArrowRight size={16} />
               </a>
               <a href="tel:+358406887988" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold">
-                Call now
+                Call Aigars
                 <Phone size={16} />
               </a>
-            </div>
-            <div className="mt-10 flex flex-wrap gap-4 text-xs text-zinc-300">
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
-                Fast response
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-amber-400/40 bg-amber-400/10 px-3 py-2">
-                Safety-first
-              </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
-                On-site ready
-              </span>
             </div>
           </div>
         </div>
@@ -212,59 +182,37 @@ export default function HitsaustyotPage() {
             <div className="text-xs uppercase tracking-[0.4em] text-zinc-400">Service flow</div>
             <h2 className="mt-4 text-3xl md:text-5xl font-semibold">Scrollytelling service delivery</h2>
             <p className="mt-4 text-zinc-300 max-w-3xl">
-              Scroll to see how our welding service adapts to each phase: workforce, readiness, safety, and reporting. The media panel updates with each step.
+              Scroll to see how we deliver welding workforce step-by-step. The active step highlights and the media panel updates as you move.
             </p>
           </div>
           <ScrollSteps steps={STEPS} />
         </div>
       </section>
 
-      <section id="coverage" className="py-20 bg-zinc-900/40">
+      <section id="cta" className="py-16 bg-amber-400 text-zinc-950">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-10 items-center">
+          <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-8 items-center">
             <div>
-              <div className="text-xs uppercase tracking-[0.4em] text-zinc-400">Coverage</div>
-              <h3 className="mt-4 text-3xl font-semibold">Southwest Finland & Satakunta</h3>
-              <p className="mt-4 text-zinc-300">
-                We mobilize quickly across key industrial regions and expand coverage on request.
+              <div className="text-xs uppercase tracking-[0.4em] text-zinc-700">Need welding workforce on-site?</div>
+              <h3 className="mt-3 text-3xl font-semibold">Call directly or email your project scope. We respond fast.</h3>
+              <p className="mt-4 text-zinc-800">
+                Aigars Cerpinskis — +358 40 688 7988
+                <br />
+                Martins Cerpinskis — +358 40 620 6846
               </p>
             </div>
-            <div className="grid gap-4">
-              {COVERAGE.map((area) => (
-                <div key={area.region} className="rounded-2xl border border-white/10 bg-white/5 p-5">
-                  <div className="flex items-center gap-2 text-white font-semibold">
-                    <MapPin size={16} />
-                    {area.region}
-                  </div>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {area.cities.map((city) => (
-                      <span key={city} className="rounded-full border border-white/10 px-3 py-1 text-xs text-zinc-300">
-                        {city}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-16 bg-amber-400 text-zinc-950">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
-            <div>
-              <div className="text-xs uppercase tracking-[0.4em] text-zinc-700">Need service support?</div>
-              <h3 className="mt-3 text-3xl font-semibold">Get a welding team on site fast</h3>
-            </div>
-            <div className="flex flex-col sm:flex-row gap-3">
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-zinc-950 text-white px-6 py-3 text-sm font-semibold">
-                Request an offer
-                <ArrowRight size={16} />
-              </a>
-              <a href="tel:+358406887988" className="inline-flex items-center gap-2 rounded-full border border-zinc-800 px-6 py-3 text-sm font-semibold">
+            <div className="flex flex-col gap-3">
+              <a href="tel:+358406887988" className="inline-flex items-center justify-center gap-2 rounded-full bg-zinc-950 text-white px-6 py-3 text-sm font-semibold">
                 Call Aigars
                 <Phone size={16} />
+              </a>
+              <a href="tel:+358406206846" className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-800 px-6 py-3 text-sm font-semibold">
+                Call Martins
+                <Phone size={16} />
+              </a>
+              <a href="mailto:support@nordmastergroup.com" className="inline-flex items-center justify-center gap-2 rounded-full border border-zinc-800 px-6 py-3 text-sm font-semibold">
+                Email
+                <Mail size={16} />
               </a>
             </div>
           </div>
@@ -276,10 +224,10 @@ export default function HitsaustyotPage() {
           <div className="grid lg:grid-cols-[1fr_1.2fr] gap-10">
             <div className="space-y-6">
               <div>
-                <div className="text-xs uppercase tracking-[0.4em] text-zinc-400">Contact</div>
+                <div className="text-xs uppercase tracking-[0.4em] text-zinc-400">Direct contact</div>
                 <h3 className="mt-4 text-3xl font-semibold">Talk to our coordinators</h3>
                 <p className="mt-4 text-zinc-300">
-                  Reach out directly for availability, pricing, and start times.
+                  We answer quickly and keep communication clear during your project.
                 </p>
               </div>
 
