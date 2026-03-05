@@ -1,11 +1,11 @@
 # Nordmaster.fi
 
-Production-ready React + Vite website for Nordmaster Group Oy.
+Next.js App Router service site for Nordmaster Group.
 
 ## Stack
 
+- Next.js 14 (App Router)
 - React 18 + TypeScript
-- Vite 6
 - Tailwind CSS 4
 
 ## Scripts
@@ -13,23 +13,18 @@ Production-ready React + Vite website for Nordmaster Group Oy.
 - `npm run dev` - Start local dev server
 - `npm run typecheck` - Run TypeScript checks
 - `npm run build` - Create production build
-- `npm run preview` - Preview production build locally
+- `npm run start` - Run production server
 - `npm run check` - Typecheck + build
 
 ## Project Structure
 
-- `src/app` - Application UI and business components
+- `app` - Next.js App Router pages and API routes
+- `components` - Shared UI components
 - `src/styles` - Global styling and theme files
-- `public` - Static assets (`robots.txt`, `sitemap.xml`, manifest, icons)
+- `public` - Static assets
 
-## Production Readiness
+## Environment Variables
 
-- SEO metadata included in `index.html`
-- Open Graph and Twitter social metadata
-- `robots.txt` and `sitemap.xml`
-- Web app manifest
-- Consistent repository text settings (`.editorconfig`, `.gitattributes`)
-
-## Dependencies
-
-- `npm i lucide-react nodemailer`
+- `ZOHO_SMTP_USER`
+- `ZOHO_SMTP_PASS`
+- `CONTACT_TO`
