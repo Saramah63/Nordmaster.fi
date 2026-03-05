@@ -141,7 +141,7 @@ export default function HitsaustyotPage() {
             </nav>
             <a
               href="#contact"
-              className="inline-flex items-center gap-2 rounded-full bg-white text-slate-900 px-4 py-2 text-sm font-semibold shadow-sm hover:bg-slate-100"
+              className="inline-flex items-center gap-2 rounded-full bg-amber-400 text-slate-950 px-4 py-2 text-sm font-semibold shadow-lg shadow-amber-500/30 hover:bg-amber-300"
             >
               Request an offer
               <ArrowRight size={16} />
@@ -152,9 +152,10 @@ export default function HitsaustyotPage() {
 
       <section id="home" className="relative overflow-hidden">
         <div className="absolute inset-0">
-          <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-slate-800/40 blur-3xl" />
-          <div className="absolute top-24 right-0 h-[420px] w-[420px] rounded-full bg-slate-700/30 blur-3xl" />
+          <div className="absolute -top-32 -left-32 h-96 w-96 rounded-full bg-amber-500/20 blur-3xl" />
+          <div className="absolute top-24 right-0 h-[420px] w-[420px] rounded-full bg-slate-700/40 blur-3xl" />
           <div className="absolute bottom-0 left-0 right-0 h-[260px] bg-gradient-to-t from-slate-950 via-slate-950/80 to-transparent" />
+          <div className="absolute inset-0 opacity-30" style={{ backgroundImage: 'radial-gradient(circle at 1px 1px, rgba(255,255,255,0.06) 1px, transparent 0)', backgroundSize: '26px 26px' }} />
         </div>
 
         <div className="container mx-auto px-4 relative z-10 py-20 lg:py-28">
@@ -172,7 +173,7 @@ export default function HitsaustyotPage() {
             <div className="mt-8 flex flex-col sm:flex-row gap-4">
               <a
                 href="#contact"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-white text-slate-900 px-6 py-3 text-sm font-semibold"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-amber-400 text-slate-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-amber-500/30"
               >
                 Request offer
                 <ArrowRight size={16} />
@@ -191,7 +192,7 @@ export default function HitsaustyotPage() {
                 <Clock size={14} />
                 Fast response
               </span>
-              <span className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2">
+              <span className="inline-flex items-center gap-2 rounded-full border border-amber-500/40 bg-amber-500/10 px-3 py-2">
                 <ShieldCheck size={14} />
                 Safety-first
               </span>
@@ -263,7 +264,7 @@ export default function HitsaustyotPage() {
       >
         <div className="grid md:grid-cols-2 xl:grid-cols-3 gap-6">
           {OFFER_ITEMS.map((item) => (
-            <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-white/20 transition">
+            <div key={item.title} className="rounded-2xl border border-white/10 bg-white/5 p-6 hover:border-amber-400/40 hover:-translate-y-1 transition-all duration-300 shadow-lg shadow-black/40">
               <div className="flex items-start justify-between">
                 <h3 className="text-lg font-semibold text-white">{item.title}</h3>
                 <ChevronRight className="text-slate-500" size={18} />
@@ -313,7 +314,7 @@ export default function HitsaustyotPage() {
       >
         <div className="grid md:grid-cols-3 gap-6">
           {COVERAGE.map((area) => (
-            <div key={area.region} className="rounded-2xl border border-white/10 bg-white/5 p-6">
+            <div key={area.region} className="rounded-2xl border border-white/10 bg-gradient-to-br from-white/5 via-white/5 to-amber-500/10 p-6">
               <div className="flex items-center gap-2 text-white font-semibold">
                 <MapPin size={16} />
                 {area.region}
@@ -330,20 +331,20 @@ export default function HitsaustyotPage() {
         </div>
       </Section>
 
-      <section className="py-16 bg-white text-slate-900">
+      <section className="py-16 bg-slate-900 text-white">
         <div className="container mx-auto px-4">
-          <div className="rounded-3xl border border-slate-200 bg-slate-50 p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+          <div className="rounded-3xl border border-white/10 bg-gradient-to-r from-amber-500/10 via-slate-900 to-slate-950 p-8 md:p-12 flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
             <div>
-              <div className="text-xs uppercase tracking-[0.4em] text-slate-500">Need service support?</div>
+              <div className="text-xs uppercase tracking-[0.4em] text-amber-200">Need service support?</div>
               <h3 className="mt-3 text-3xl font-semibold">Get a welding team on site fast</h3>
-              <p className="mt-3 text-slate-600">Reach out now. We respond quickly with availability and a clear plan.</p>
+              <p className="mt-3 text-slate-300">Reach out now. We respond quickly with availability and a clear plan.</p>
             </div>
             <div className="flex flex-col sm:flex-row gap-3">
-              <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-slate-900 text-white px-6 py-3 text-sm font-semibold">
+              <a href="#contact" className="inline-flex items-center gap-2 rounded-full bg-amber-400 text-slate-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-amber-500/30">
                 Request an offer
                 <ArrowRight size={16} />
               </a>
-              <a href="tel:+358406887988" className="inline-flex items-center gap-2 rounded-full border border-slate-300 px-6 py-3 text-sm font-semibold">
+              <a href="tel:+358406887988" className="inline-flex items-center gap-2 rounded-full border border-white/20 px-6 py-3 text-sm font-semibold">
                 Call Aigars
                 <Phone size={16} />
               </a>
@@ -389,7 +390,7 @@ export default function HitsaustyotPage() {
             </div>
           </div>
 
-          <form onSubmit={handleSubmit} className="rounded-3xl border border-white/10 bg-white/5 p-8">
+          <form onSubmit={handleSubmit} className="rounded-3xl border border-amber-500/20 bg-white/5 p-8 shadow-2xl shadow-black/50">
             <div className="grid md:grid-cols-2 gap-4">
               <div>
                 <label className="text-xs uppercase tracking-[0.3em] text-slate-400">Name</label>
@@ -432,7 +433,7 @@ export default function HitsaustyotPage() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-white text-slate-900 px-6 py-3 text-sm font-semibold"
+              className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-amber-400 text-slate-950 px-6 py-3 text-sm font-semibold shadow-lg shadow-amber-500/30"
             >
               {status === 'sending' ? 'Sending...' : 'Request an offer'}
               <ArrowRight size={16} />
