@@ -1,8 +1,20 @@
-import { Phone, Mail, ArrowRight } from 'lucide-react';
+import { Phone, Mail, ArrowRight, Copy, Check } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
+import { useState } from 'react';
 
 export function Footer() {
   const { t } = useLanguage();
+  const [copied, setCopied] = useState(false);
+
+  const copyEmail = async () => {
+    try {
+      await navigator.clipboard.writeText('support@nordmastergroup.com');
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch {
+      setCopied(false);
+    }
+  };
 
   return (
     <footer className="bg-zinc-950 text-zinc-300">
@@ -48,6 +60,16 @@ export function Footer() {
                 <a href="mailto:support@nordmastergroup.com" className="hover:text-white transition-colors">
                   support@nordmastergroup.com
                 </a>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  onClick={copyEmail}
+                  className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3 py-1 text-xs text-white hover:border-white/40"
+                >
+                  {copied ? <Check size={14} /> : <Copy size={14} />}
+                  {copied ? t('contact.email.copied') : t('contact.email.copy')}
+                </button>
               </li>
             </ul>
           </div>
