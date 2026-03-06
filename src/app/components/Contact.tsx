@@ -47,14 +47,20 @@ export function Contact() {
         setStatus('success');
         setMessage(t('contact.form.success'));
         event.currentTarget.reset();
-      } else {
-        setStatus('error');
-        setMessage(data?.error || t('contact.form.error'));
+        return;
       }
     } catch {
-      setStatus('error');
-      setMessage(t('contact.form.error'));
+      // fall through to mailto fallback
     }
+
+    const subject = encodeURIComponent(`Nordmaster Group — ${payload.name}`);
+    const body = encodeURIComponent(
+      `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone || '-'}\n\nMessage:\n${payload.message}`
+    );
+    window.location.href = `mailto:support@nordmastergroup.com?subject=${subject}&body=${body}`;
+    setStatus('success');
+    setMessage(t('contact.form.fallback'));
+    event.currentTarget.reset();
   };
 
   return (

@@ -1,3 +1,4 @@
+// @refresh reset
 import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
 
 type Language = 'fi' | 'en';
@@ -235,6 +236,7 @@ const translations = {
     'contact.form.submit': 'Lähetä',
     'contact.form.sending': 'Lähetetään...',
     'contact.form.success': 'Kiitos! Viesti on lähetetty.',
+    'contact.form.fallback': 'Lähetin viestin sähköpostiohjelmaan varmistuksena.',
     'contact.form.error': 'Lähetys epäonnistui. Tarkista tiedot ja yritä uudelleen.',
     'contact.person1': 'Aigars Cerpinskis',
     'contact.person2': 'Martins Cerpinskis',
@@ -477,6 +479,7 @@ const translations = {
     'contact.form.submit': 'Send',
     'contact.form.sending': 'Sending...',
     'contact.form.success': 'Thanks! Your message was sent.',
+    'contact.form.fallback': 'Opened your mail app as a fallback.',
     'contact.form.error': 'Send failed. Please check and try again.',
     'contact.person1': 'Aigars Cerpinskis',
     'contact.person2': 'Martins Cerpinskis',
