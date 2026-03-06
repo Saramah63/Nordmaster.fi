@@ -239,7 +239,13 @@ const translations = {
     'contact.form.fallback': 'Lähetin viestin sähköpostiohjelmaan varmistuksena.',
     'contact.form.error': 'Lähetys epäonnistui. Tarkista tiedot ja yritä uudelleen.',
     'contact.person1': 'Aigars Cerpinskis',
+    'contact.person1.lang': 'Kielet: FI, LV, RU, EN',
     'contact.person2': 'Martins Cerpinskis',
+    'contact.person2.lang': 'Kielet: FI, LV, RU, EN',
+    'contact.person3': 'Raivis Samtabiuss',
+    'contact.person3.lang': 'Kielet: FI, LV, RU, EN',
+    'contact.person4': 'Alireza Alizadeh',
+    'contact.person4.lang': 'Kielet: EN',
     'contact.call': 'Soita',
     
     // Footer
@@ -482,7 +488,13 @@ const translations = {
     'contact.form.fallback': 'Opened your mail app as a fallback.',
     'contact.form.error': 'Send failed. Please check and try again.',
     'contact.person1': 'Aigars Cerpinskis',
+    'contact.person1.lang': 'Languages: FI, LV, RU, EN',
     'contact.person2': 'Martins Cerpinskis',
+    'contact.person2.lang': 'Languages: FI, LV, RU, EN',
+    'contact.person3': 'Raivis Samtabiuss',
+    'contact.person3.lang': 'Languages: FI, LV, RU, EN',
+    'contact.person4': 'Alireza Alizadeh',
+    'contact.person4.lang': 'Languages: EN',
     'contact.call': 'Call',
     
     // Footer
