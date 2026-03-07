@@ -49,18 +49,13 @@ export function Contact() {
         event.currentTarget.reset();
         return;
       }
+      setStatus('error');
+      setMessage(data?.error || t('contact.form.error'));
+      return;
     } catch {
-      // fall through to mailto fallback
+      setStatus('error');
+      setMessage(t('contact.form.error'));
     }
-
-    const subject = encodeURIComponent(`Nordmaster Group — ${payload.name}`);
-    const body = encodeURIComponent(
-      `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone || '-'}\n\nMessage:\n${payload.message}`
-    );
-    window.location.href = `mailto:support@nordmastergroup.com?subject=${subject}&body=${body}`;
-    setStatus('success');
-    setMessage(t('contact.form.fallback'));
-    event.currentTarget.reset();
   };
 
   return (
@@ -115,7 +110,7 @@ export function Contact() {
             <div className="mt-6 flex flex-col gap-3">
               <a
                 href="mailto:support@nordmastergroup.com"
-                className="inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-white/[0.06] p-6 text-sm font-semibold text-white pointer-events-auto"
+                className="relative z-10 inline-flex items-center gap-3 rounded-2xl border border-white/15 bg-white/[0.06] p-6 text-sm font-semibold text-white pointer-events-auto"
               >
                 <Mail size={18} />
                 support@nordmastergroup.com

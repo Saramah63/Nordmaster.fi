@@ -58,7 +58,7 @@ export function FullBleedSection({
     >
       <div className={`relative w-full ${heightClassName}`}>
         <div
-          className={`absolute inset-0 transition-opacity duration-700 ${
+          className={`pointer-events-none absolute inset-0 transition-opacity duration-700 ${
             isVisible ? 'opacity-100' : 'opacity-0'
           }`}
         >

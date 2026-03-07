@@ -7,7 +7,17 @@ export default async function handler(req, res) {
   }
 
   try {
-    const { name, email, phone, message } = req.body || {};
+    let body = req.body || {};
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch {
+        res.status(400).json({ ok: false, error: 'Invalid request body' });
+        return;
+      }
+    }
+
+    const { name, email, phone, message } = body || {};
     const cleanName = String(name || '').trim();
     const cleanEmail = String(email || '').trim();
     const cleanPhone = String(phone || '').trim();

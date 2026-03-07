@@ -55,21 +55,24 @@ export function Footer() {
                   Martins Cerpinskis — +358 40 620 6846
                 </a>
               </li>
-              <li className="flex items-center gap-2">
-                <Mail size={16} className="text-amber-300" />
-                <a href="mailto:support@nordmastergroup.com" className="hover:text-white transition-colors">
-                  support@nordmastergroup.com
-                </a>
-              </li>
               <li>
-                <button
-                  type="button"
-                  onClick={copyEmail}
-                  className="inline-flex items-center gap-2 rounded-full border border-white/20 px-3 py-1 text-xs text-white hover:border-white/40"
-                >
-                  {copied ? <Check size={14} /> : <Copy size={14} />}
-                  {copied ? t('contact.email.copied') : t('contact.email.copy')}
-                </button>
+                <div className="flex flex-col gap-2 rounded-xl border border-white/10 bg-white/[0.04] p-3">
+                  <a
+                    href="mailto:support@nordmastergroup.com"
+                    className="pointer-events-auto relative z-10 inline-flex items-center gap-2 text-sm text-white hover:text-white/90 transition-colors"
+                  >
+                    <Mail size={16} className="text-amber-300" />
+                    support@nordmastergroup.com
+                  </a>
+                  <button
+                    type="button"
+                    onClick={copyEmail}
+                    className="pointer-events-auto inline-flex items-center gap-2 self-start rounded-full border border-white/20 px-3 py-1 text-xs text-white hover:border-white/40"
+                  >
+                    {copied ? <Check size={14} /> : <Copy size={14} />}
+                    {copied ? t('contact.email.copied') : t('contact.email.copy')}
+                  </button>
+                </div>
               </li>
             </ul>
           </div>
