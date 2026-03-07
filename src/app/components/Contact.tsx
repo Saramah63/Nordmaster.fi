@@ -35,27 +35,15 @@ export function Contact() {
       return;
     }
 
-    try {
-      setStatus('loading');
-      const response = await fetch('/api/contact', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(payload),
-      });
-      const data = await response.json();
-      if (response.ok && data.ok) {
-        setStatus('success');
-        setMessage(t('contact.form.success'));
-        event.currentTarget.reset();
-        return;
-      }
-      setStatus('error');
-      setMessage(data?.error || t('contact.form.error'));
-      return;
-    } catch {
-      setStatus('error');
-      setMessage(t('contact.form.error'));
-    }
+    setStatus('loading');
+    const subject = encodeURIComponent(`Nordmaster Group — ${payload.name}`);
+    const body = encodeURIComponent(
+      `Name: ${payload.name}\nEmail: ${payload.email}\nPhone: ${payload.phone || '-'}\n\nMessage:\n${payload.message}`
+    );
+    window.location.href = `mailto:support@nordmastergroup.com?subject=${subject}&body=${body}`;
+    setStatus('success');
+    setMessage(t('contact.form.success'));
+    event.currentTarget.reset();
   };
 
   return (
